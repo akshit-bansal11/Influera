@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #8e8e8e;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+header, main, footer {
+    background-color: #272727;
+    max-width: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* !Header */
+
+    /* *NavBar */
+
+    .navBar {
+        background-color: #272727;
+        margin: 0;
+        padding: .5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .navBrand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brandLogo {
+        width: 3rem;
+    }
+
+    .brandName {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .navLinks {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .navLink a {
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .navLink:hover a {
+        color: deepskyblue;
+        transition: all ease-in-out 100ms;
+    }
+
+    .navButtons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .navButton {
+        padding: .5rem 1rem;
+        border-radius: .25rem;
+        background-color: orange;
+        color: black;
+        border: none;
+    }
+
+    .navButton:hover {
+        background-color: deepskyblue;
+        color: black;
+        transition: all ease-in-out 100ms;
+    }
+
+    .navButton:active {
+        background-color: rgba(0, 191, 255, 0.826);
+    }
+
+/* !Main */
+
+    .sectionHeading {
+        color: orange;
+        margin-bottom: 2rem;
+    }
+
+    /* *Carousel */
+
+    .carousel {
+        max-width: 60rem;
+        padding: 0 10rem;
+        margin: 2rem auto;
+    }
+
+    .carouselImage {
+        height: 20rem;
+    }
+
+    
+
+    /* *Services */
+
+    .serviceCards {
+        display: flex;
+        justify-content: space-around;
+        align-content: space-between;
+        align-items: start;
+        flex-wrap: wrap;
+    }
+
+    .serviceCard {
+        max-width: min-content;
+        background-color: #434343;
+        padding: 1rem;
+        border: solid orange .2rem;
+        scale: 90%;
+        transition: all ease-in-out 200ms;
+    }
+
+    .serviceCard:hover {
+        box-shadow: orange 0rem 0rem 1rem;
+        scale: 100%;
+    }
+
+    .serviceImage {
+        max-width: 24rem;
+    }
+
+    .serviceTitle {
+        font-size: 2rem;
+        color: orange;
+    }
+
+    .serviceDescription {
+        font-size: 1rem;
+        color: white;
+    }
