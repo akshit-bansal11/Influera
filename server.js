@@ -2,7 +2,8 @@ var express = require("express");
 var fileuploader=require("express-fileupload");
 let app=express();
 var mysql2=require("mysql2");
-var nodemailer = require('nodemailer');  
+var nodemailer = require('nodemailer');
+var cloudinary = require('cloudinary').v2;
 
 app.listen(2004,function()
 {
@@ -20,15 +21,23 @@ app.use(fileuploader());
 //      dateStrings:true
 //  }
 
-let config = {
-    host :"bzcarbhkzg6r2uuhk9a6-mysql.services.clever-cloud.com",
-    user:"urawptr8vfauiyny",
-    password:"IdSGlXYEWjreAKXgH1zJ",
-    database:"bzcarbhkzg6r2uuhk9a6",
-    dateStrings:true,
-    keepAliveInitialDelay : 10000,
-    enableKeepAlive : true,
-}
+// let config = {
+//     host :"bzcarbhkzg6r2uuhk9a6-mysql.services.clever-cloud.com",
+//     user:"urawptr8vfauiyny",
+//     password:"IdSGlXYEWjreAKXgH1zJ",
+//     database:"bzcarbhkzg6r2uuhk9a6",
+//     dateStrings:true,
+//     keepAliveInitialDelay : 10000,
+//     enableKeepAlive : true,
+// }
+
+cloudinary.config({ 
+    cloud_name: 'dugsystpq', 
+    api_key: '522263183434765', 
+    api_secret: 't3W9EPPN8HztoHpbf7qYznYGpTM' // Click 'View Credentials' below to copy your API secret
+});
+
+let config = "mysql://avnadmin:AVNS_os7vBHEJWtggW-K3zUD@mysql-2d75a1d9-influera.e.aivencloud.com:19893/defaultdb";
 
  var mysql = mysql2.createConnection(config);
  mysql.connect(function(err)
@@ -91,7 +100,7 @@ app.get("/check-login-details",function(req,resp)
 })
 ///////////////////////////////////////////////////
 // Influencer profile details
-app.post("/iprofile-save-details",function(req,resp)
+app.post("/iprofile-save-details",async function(req,resp)
 {
     let fileName="";
     if(req.files!=null)
@@ -99,11 +108,19 @@ app.post("/iprofile-save-details",function(req,resp)
             fileName=req.files.ppic.name;
             let path=__dirname+"/public/uploads/"+fileName;
             req.files.ppic.mv(path);
+
+            await cloudinary.uploader.upload(path)
+            .then(function(result) {
+
+                fileName = result.url;
+            })
         }
         else
         fileName="nopic.jpg";
+
+        var txtDOB = (req.body.txtDob).split("T")[0];
    
-    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,req.body.txtDob,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
+    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
     {
             if(err==null)
                     resp.redirect("result.html");
