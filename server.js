@@ -60,10 +60,10 @@ var transporter = nodemailer.createTransport({
 /////////////////////////////////////////////////////
 app.get("/",function(req,resp)
 {
-    let path = __dirname+"/public/index.html";
+    let path = __dirname+"/public/HTML/index.html";
     resp.sendFile(path);
 })
-///////////////////////////////////////////////////////////////////////////
+
 app.get("/signup-details",function(req,resp)
  {
      let txtEmail = req.query.txtEmail;
