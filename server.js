@@ -34,7 +34,7 @@ app.use(fileuploader());
 cloudinary.config({ 
     cloud_name: 'dugsystpq', 
     api_key: '522263183434765', 
-    api_secret: 't3W9EPPN8HztoHpbf7qYznYGpTM' // Click 'View Credentials' below to copy your API secret
+    api_secret: 't3W9EPPN8HztoHpbf7qYznYGpTM' 
 });
 
 let config = "mysql://avnadmin:AVNS_os7vBHEJWtggW-K3zUD@mysql-2d75a1d9-influera.e.aivencloud.com:19893/defaultdb";
@@ -73,7 +73,7 @@ app.get("/signup-details",function(req,resp)
      mysql.query("insert into users values(?,?,?,?)",[txtEmail,txtPwd,utype,status],function(err)
     {
          if(err==null)
-             resp.send("Your Record is Successfully Saved");
+             resp.send("Sign Up Successful, You can now Log In");
          else
              resp.send(err.message);
     })

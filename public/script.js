@@ -1,3 +1,63 @@
+// !Index
+
+$(document).ready(function()
+    {
+
+    $("#txtEmail_signup").blur(function()
+    {
+        if($(this).val()=="")
+        {
+            $("#btnSignup").prop("disabled",true);
+        }
+        if($(this).val()!="")
+        {
+            $("#btnSignup").prop("disabled",false);
+        }
+    })
+
+    $("#txtPwd_signup").blur(function()
+    {
+        if($(this).val()=="")
+        {
+            $("#btnSignup").prop("disabled",true);
+        }
+        if($(this).val()!="")
+        {
+            $("#btnSignup").prop("disabled",false);
+        }
+    })
+
+    $("#utype").blur(function()
+    {
+        
+        if($(this).val()=="none")
+        {
+            $("#btnSignup").prop("disabled",true);
+        }
+        if($(this).val()!="none")
+        {
+            $("#btnSignup").prop("disabled",false);
+        }
+        if($("#txtEmail_signup").val()=="" || $("#txtPwd_signup").val()=="")
+        {
+            $("#btnSignup").prop("disabled",true);
+        }
+    })
+
+    $("#txtForget_login").blur(function()
+    {
+        if($(this).val()=="")
+        {
+            $("#btnForget").prop("disabled",true);
+        }
+        else
+        {
+            $("#btnForget").prop("disabled",false);
+        }
+    })
+
+})
+
 $(document).ready(function(){
     
     $("#btnSignup").click(function(){
@@ -45,14 +105,14 @@ $(document).ready(function(){
                     
                     if(jsonAry[0].utype==="Influencer")
                     {
-                        location.href="infl-dash.html";
+                        location.href="influencerDashboard.html";
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
 
                     }
                     else if(jsonAry[0].utype==="Collaborator")
                     {
                       //  location.href="infl-finder.html";
-                      location.href="client-dash.html"; 
+                      location.href="investorDashboard.html"; 
                       localStorage.setItem("activeuser",$("#txtEmail_login").val());
                     }
                 }

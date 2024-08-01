@@ -1,3 +1,7 @@
+:root {
+    --accentColor: deepskyblue;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,7 +13,7 @@ body {
     background-color: #8e8e8e;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     max-width: 100%;
 }
 
@@ -322,7 +326,7 @@ main {
         color: white;
     }
 
-    .footerList li:hover a {
+    .footerList li a:hover {
         color: deepskyblue;
         text-decoration: underline;
         cursor: pointer;
@@ -345,11 +349,16 @@ main {
         border: 0;
     }
 
-/* ?Modals */
+/* !Modals */
 
     .modal-content {
         background-color: #272727;
         color: deepskyblue;
+    }
+
+    .modal-header {
+        border-bottom: solid orange .1rem;
+
     }
 
     .btn-close {
@@ -358,6 +367,40 @@ main {
 
     .modal-title {
         color: orange;
+    }
+
+    .form-text {
+        color: lightgrey;
+    }
+
+    .form-control, .form-select {
+        background-color: #343434;
+        margin: 1rem 0 1rem 0;
+        border: solid orange .1rem;
+        color: white;
+    }
+
+    .form-select, .form-control {
+        appearance: menulist;
+        -webkit-appearance: menulist;
+    }
+
+    .form-control:hover, .form-select:hover {
+        background-color: #444444;
+    }
+
+    .form-control:focus, .form-select:focus {
+        background-color: #555555;
+        border: solid orange .1rem;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: lightgrey;
+    }
+
+    .form-control:focus::placeholder {
+        opacity: 0;
     }
 
     .modalButton {
