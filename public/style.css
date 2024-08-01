@@ -26,14 +26,16 @@ a {
 
     /* *NavBar */
 
-    .navBar {
+    header {
         background-color: #272727;
-        margin: 0;
-        padding: .5rem 1rem;
+    }
+
+    .navBar {
+        padding: 1rem 1rem;
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        gap: 1rem;
+        justify-content: space-between;
+        row-gap: 2rem;
         flex-wrap: wrap;
     }
 
@@ -41,10 +43,11 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 1rem;
     }
 
     .brandLogo {
-        width: 3rem;
+        height: 3rem;
     }
 
     .brandName {
@@ -136,6 +139,9 @@ main {
         scale: 90%;
         transition: all ease-in-out 200ms;
         padding: 1rem;
+        display: flex;
+        gap: .5rem;
+        border: solid deepskyblue 3px;
     }
 
     .card:hover {
@@ -144,9 +150,29 @@ main {
         scale: 100%;
     }
 
+    .cardImage {
+        max-width: 100%;
+        height: auto;
+        filter: brightness(80%);
+        transition: all ease-in-out 200ms;
+    }
+
+    .card:hover .cardImage {
+        filter: brightness(100%);
+    }
+
+    .cardTitle {
+        color: deepskyblue;
+        transition: all ease-in-out 200ms;
+    }
+
+    .card:hover .cardTitle {
+        color: orange;
+    }
+
     .cardDescription {
         font-size: 1rem;
-        color: white;
+        color: rgba(255, 255, 255, 0.717);
     }
 
     /* *Services */
@@ -163,14 +189,8 @@ main {
         max-width: 24rem;
     }
 
-    .serviceImage {
-        max-width: 100%;
-        height: auto;
-    }
-
     .serviceTitle {
         font-size: 2rem;
-        color: orange;
     }
 
     /* *Team */
@@ -178,15 +198,9 @@ main {
     .teamCard {
         max-width: 20rem;
     }
-
-    .teamImage {
-        max-width: 100%;
-        height: auto;
-    }
-
+    
     .teamTitle {
         font-size: 1.5rem;
-        color: orange;
     }
 /* !Footer */
 
@@ -197,6 +211,10 @@ main {
         align-items: top;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+
+    .footerSectionHeading {
+        color: orange;
     }
 
     /* ^Email Box */
@@ -291,6 +309,24 @@ main {
     .textInputWrapper:focus-within .textInput::placeholder {
         opacity: 0;
     }
+
+    .footerList {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footerList li a {
+        color: white;
+    }
+
+    .footerList li:hover a {
+        color: deepskyblue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
     
 
     .reachUsmap {
@@ -307,4 +343,36 @@ main {
         width: 100%;
         height: 100%;
         border: 0;
+    }
+
+/* ?Modals */
+
+    .modal-content {
+        background-color: #272727;
+        color: deepskyblue;
+    }
+
+    .btn-close {
+        background-color: orange;
+    }
+
+    .modal-title {
+        color: orange;
+    }
+
+    .modalButton {
+        padding: .5rem 1rem;
+        border-radius: .25rem;
+        background-color: orange;
+        color: black;
+        border: none;
+    }
+
+    .modalButton:hover {
+        background-color: deepskyblue;
+        color: black;
+    }
+
+    .modalButton:active {
+        background-color: rgba(0, 191, 255, 0.797);
     }
