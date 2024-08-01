@@ -292,55 +292,31 @@ background-size:100%;
 <body style="background-color: #EAF7FD;">
  <!--=============================================================================-->
  <!--Profile Form-->  
- <!-- Navbar -->
- <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-  <div class="container-fluid">
-    <!------------------------------------------------------------------ ----->
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img src="pics/pngwing.com.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
-          
-        </a>
-      </div>
-    </nav>
-    <!-- --------------------------------------------------------------- -->
-    <a class="navbar-brand" href="index.html" id="nav-text">INFLUENCER</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-        <li class="nav-item" id="nav-margin">
-          <a class="nav-link active" aria-current="page" href="#"></a>
-        </li>
-        
-       
-        <li class="nav-item">
-          <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-             <a href="#ourteam"> <span class="navbar-brand mb-0 h1"></span></a>
-            </div>
-          </nav>
-        </li>
-        <!-- <li class="nav-item">
-          <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <input type="button" class="btn btn-primary" value="Logout" id="btnLogout" onclick="doLogout();">
-            </div>
-          </nav>
-        </li> -->
-      </ul>
-      <!-- ------------------------------------------------------------------ -->
-      <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <input type="button" class="btn btn-primary" value="Logout" id="btnLogout" onclick="doLogout();">
-        </div>
-      </nav>
-      <!-- --------------------------------------------------------------------------- -->
+ <header>
+
+  <!-- *Navbar -->
+  <nav class="navBar">
+    <div class=" navItem navBrand">
+      <img class="brandLogo" src="./Assets/Logo and Icons/brandLogo.svg" alt="">
+      <a class="brandName" href="index.html" id="nav-text">Influera</a>
     </div>
-  </div>
-</nav>
+    <ul class="navItem navLinks">
+      <li class="navLink">
+        <a href="#services">Services</a>
+      </li>
+      <li class="navLink">
+        <a href="#team">Team</a>
+      </li>
+      <li class="navLink">
+        <a href="#reachus">Contact</a>
+      </li>
+    </ul>
+    <div class="navItem navButtons">
+      <button type="button" class="navButton" data-bs-toggle="modal" data-bs-target="#signupModal" id="buttons">Signup</button>
+      <button type="button" class="navButton" data-bs-toggle="modal" data-bs-target="#loginModal" id="buttons">Login</button>
+    </div>
+  </nav>
+</header>
 
 <div class="container" >
   <div class="row" >
