@@ -60,7 +60,7 @@ var transporter = nodemailer.createTransport({
 /////////////////////////////////////////////////////
 app.get("/",function(req,resp)
 {
-    let path = __dirname+"/public/HTML/index.html";
+    let path = __dirname+"/public/index.html";
     resp.sendFile(path);
 })
 

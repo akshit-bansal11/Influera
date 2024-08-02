@@ -105,14 +105,13 @@ $(document).ready(function(){
                     
                     if(jsonAry[0].utype==="Influencer")
                     {
-                        location.href="../HTML/influencerDashboard.html";
+                        location.href="./influencer/influencerDashboard.html";
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
 
                     }
                     else if(jsonAry[0].utype==="Collaborator")
                     {
-                      //  location.href="infl-finder.html";
-                      location.href="../HTML/investorDashboard.html"; 
+                      location.href="./investor/investorDashboard.html"; 
                       localStorage.setItem("activeuser",$("#txtEmail_login").val());
                     }
                 }
