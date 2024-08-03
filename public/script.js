@@ -60,7 +60,8 @@ $(document).ready(function()
 
 $(document).ready(function(){
     
-    $("#btnSignup").click(function(){
+    $("#btnSignup").click(function()
+    {
         
         let obj={
             type:"get",
@@ -81,7 +82,7 @@ $(document).ready(function(){
             alert(err.statusText);
         })
 
-     });
+    });
   /////////////////////////////////////////////////////
     $("#btnLogin").click(function(){
         let obj={
@@ -105,14 +106,14 @@ $(document).ready(function(){
                     
                     if(jsonAry[0].utype==="Influencer")
                     {
-                        location.href="./influencer/influencerDashboard.html";
+                        location.href="./Influencer/influencerDashboard.html";
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
 
                     }
                     else if(jsonAry[0].utype==="Collaborator")
                     {
-                      location.href="./investor/investorDashboard.html"; 
-                      localStorage.setItem("activeuser",$("#txtEmail_login").val());
+                        location.href="./investor/investorDashboard.html"; 
+                        localStorage.setItem("activeuser",$("#txtEmail_login").val());
                     }
                 }
                 else
