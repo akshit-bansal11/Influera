@@ -6,30 +6,13 @@
     <title>DashBoard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../CSS/investorDashboard.css">
+    <link rel="stylesheet" href="investorDashboard.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
-   <!-- <script>
-        $(document).ready(function()
- {
-       if(localStorage.getItem("activeuser")==null)
-       {
-         location.href="index.html";
-         return;
-       }
-         
- })
-     </script>
-     <script>
-     function doLogout()
-   {
-     localStorage.removeItem("activeuser");
-     location.href="index.html";
-   }
-     </script> -->
+   
 </head>
 <body>
-  
+
   <!-- !HEADER -->
   <header>
 
@@ -41,13 +24,13 @@
       </div>
       <ul class="navItem navLinks">
         <li class="navLink">
-          <a href="#services">Services</a>
+          <a href="/index.html#services">Services</a>
         </li>
         <li class="navLink">
-          <a href="#team">Team</a>
+          <a href="/index.html#team">Team</a>
         </li>
         <li class="navLink">
-          <a href="#reachus">Contact</a>
+          <a href="/index.html#contact">Contact</a>
         </li>
       </ul>
       <div class="navItem navButtons">
@@ -59,7 +42,7 @@
   <!-- !MAIN -->
   <main>
     <div class="heading">
-      <h1 class="dashboardHeading">DashBoard</h1>
+      <h1 class="dashboardHeading">Investor Dashboard</h1>
     </div>
     <div class="cardsContainer">
 
@@ -95,16 +78,15 @@
           <img src="../Assets/Illustrations/8351263_3884688.svg" alt="">
         </div>
         <div class="dashboardCardButton">
-          <button type="button" class="cardButton" id="buttons"><a href="events-manager.html">Manage Events</a></button>
+          <button type="button" class="cardButton" id="buttons"><a href="../eventsManager.html">Manage Events</a></button>
         </div>
       </div>
-
       <div class="card dashboardCard">
         <div class="cardImage dashboardCardImage">
           <img src="../Assets/Illustrations/2606116_5596.svg" alt="">
         </div>
         <div class="dashboardCardButton">
-          <button type="button" class="cardButton" data-bs-toggle="modal" data-bs-target="#Settings" id="buttons">Settings</button>
+          <button type="button" class="cardButton" data-bs-toggle="modal" data-bs-target="#Settings" id="buttons">Change Password</button>
         </div>
       </div>
 
@@ -146,5 +128,82 @@
       </div>
     </div>
   </footer>
+
+  <!-- !Modals -->
+    <!-- ?Post-Bookings Modal-->
+    <div class="modal fade" id="Post-Bookings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: #1071A2;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Events</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form method="get">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Email address</label>
+                    <input type="email" class="form-control" id="txtEmail_PostEvent" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label" >Event Title</label>
+                    <input type="text" class="form-control" id="txtEvent_PostEvent" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" >Venue</label>
+                    <input type="text" class="form-control" id="txtVenue_PostEvent" >
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" >Date</label>
+                    <input type="date" class="form-control" id="txtDate_PostEvent" >
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" >Start Time</label>
+                    <input type="time" class="form-control" id="txtTime_PostEvent" >
+                  </div>
+                <center> <input type="button" id="postEvent" value="PostEvent" class="modalButton"></center>
+                  </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  <!-- ?Settings Modal -->
+  <div class="modal fade" id="Settings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: #1071A2;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label" >Email address</label>
+                  <input type="email" class="form-control" id="txtEmail_settings" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Old Password</label>
+                  <input type="password" class="form-control" id="txtPwd_old_settings">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="txtPwd_new_settings">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"> Repeat Password</label>
+                  <input type="password" class="form-control" id="txtPwd_rep_settings">
+                </div>
+                  <input type="button" id="update" value="Update" class="modalButton">
+                </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="investorDashboard.js"></script>
 </body>
 </html>

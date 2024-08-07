@@ -322,3 +322,74 @@ footer {
     height: 100%;
     border: 0;
 }
+
+/* !Modals */
+
+.modal-content {
+    background-color: #272727;
+    color: deepskyblue;
+}
+
+.modal-header {
+    border-bottom: solid orange .1rem;
+
+}
+
+.btn-close {
+    background-color: orange;
+}
+
+.modal-title {
+    color: orange;
+}
+
+.form-text {
+    color: lightgrey;
+}
+
+.form-control, .form-select {
+    background-color: #343434;
+    margin: 1rem 0 1rem 0;
+    border: solid orange .1rem;
+    color: white;
+}
+
+.form-select {
+    appearance: menulist;
+    -webkit-appearance: menulist;
+}
+
+.form-control:hover, .form-select:hover {
+    background-color: #444444;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #555555;
+    border: solid orange .1rem;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: lightgrey;
+}
+
+.form-control:focus::placeholder {
+    opacity: 0;
+}
+
+.modalButton {
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    background-color: orange;
+    color: black;
+    border: none;
+}
+
+.modalButton:hover {
+    background-color: deepskyblue;
+    color: black;
+}
+
+.modalButton:active {
+    background-color: rgba(0, 191, 255, 0.797);
+}

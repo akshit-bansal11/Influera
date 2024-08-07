@@ -1,7 +1,7 @@
-// !Index
-
 $(document).ready(function()
-    {
+{
+console.log("Hello");
+
 
     $("#txtEmail_signup").blur(function()
     {
@@ -56,13 +56,8 @@ $(document).ready(function()
         }
     })
 
-})
-
-$(document).ready(function(){
-    
     $("#btnSignup").click(function()
     {
-        
         let obj={
             type:"get",
             url:"/signup-details",
@@ -76,12 +71,10 @@ $(document).ready(function(){
         $.ajax(obj).done(function(resp)
         {
             alert(resp);
-
         }).fail(function(err)
         {
             alert(err.statusText);
         })
-
     });
   /////////////////////////////////////////////////////
     $("#btnLogin").click(function(){
@@ -120,17 +113,19 @@ $(document).ready(function(){
                 {
                     alert("Blocked...");
                 }
-                
             }
-
         }).fail(function(err)
         {
             alert(err.statusText);
         })
 
+    
+
 });
-////////////////////////////////////////////////////////////
+
+
 $("#btnEmail_infl").click(function(){
+    console.log("JS SUcks");
     let obj={
         type:"get",
         url:"/find-user-details",
@@ -142,10 +137,10 @@ $("#btnEmail_infl").click(function(){
     {
         if(jsonAry.length==0)
         {
-            alert("Invalid ID");
+            alert("No Data Found");
             return;
         }
-       // alert(JSON.stringify(jsonAry));
+        // alert(JSON.stringify(jsonAry));
         $("#txtPwd").val(jsonAry[0].pwd);//table colu. wala
         $("#txtDob").val(jsonAry[0].dob.split("T")[0]);//table colu. wala
         $("#prev").prop("src",jsonAry[0].picpath);
@@ -167,6 +162,8 @@ $("#btnEmail_infl").click(function(){
     })
 
 });
+/////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////
 $("#btnPostEvent").click(function(){
         
@@ -216,44 +213,5 @@ $("#btnSettings_update").click(function(){
 
  });
 //  ////////////////////////////////////////////////////////////////////////////////
-$("#btnEmail_client").click(function(){
-    let obj={
-        type:"get",
-        url:"/find-user-details-client",
-        data:{
-            txtEmail:$("#txtEmail").val()
-        }
-    }
-    $.ajax(obj).done(function(jsonAry)
-    {
-        if(jsonAry.length==0)
-        {
-            alert("Invalid ID");
-          
-            return;
-        }
-       // alert(JSON.stringify(jsonAry));
-       //table colu. wala
-        //table colu. wala
-        // $("#prev").prop("src","uploads/"+jsonAry[0].picpath);
-        // $("#prev").val(jsonAry[0].picpath);
-        $("#txtName").val(jsonAry[0].iname);
-        $("#txtGender").val(jsonAry[0].gender);
-        // $("#txtAdd").val(jsonAry[0].address);
-        $("#txtCity").val(jsonAry[0].city);
-        $("#txtState").val(jsonAry[0].state);
-        $("#txtMob").val(jsonAry[0].contact);
-        $("#txtType").val(jsonAry[0].type);
-        $("#btnSave").prop("disabled",true);
-        $("#btnUpdate").prop("disabled",false);
-        // $("#txtField").val(jsonAry[0].field.split(","));
-        // $("#txtInsta").val(jsonAry[0].insta);
-        // $("#txtYt").val(jsonAry[0].yt);
-        // $("#txtOther").val(jsonAry[0].other);
-    }).fail(function(err)
-    {
-        alert(err.statusText);
-    })
 
-});
 });
