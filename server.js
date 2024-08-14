@@ -39,14 +39,14 @@ cloudinary.config({
 
 let config = "mysql://avnadmin:AVNS_os7vBHEJWtggW-K3zUD@mysql-2d75a1d9-influera.e.aivencloud.com:19893/defaultdb";
 
- var mysql = mysql2.createConnection(config);
- mysql.connect(function(err)
- {
-     if(err==null)
-         console.log("Connected to Database Successfully");
-     else
-     console.log(err.message+"  ########");
- })
+var mysql = mysql2.createConnection(config);
+mysql.connect(function(err)
+{
+    if(err==null)
+        console.log("Connected to Database Successfully");
+    else
+    console.log(err.message+"  ########");
+});
 /////////////////////////////////////////////////////////////////////
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -406,36 +406,41 @@ app.get("/fetch-some-name",function(req,resp)
 
 })
 ///////////////////////////////////////////////////////////////////////////////////////////
-app.get("/fetch-future-events",function(req,resp)
-{
+app.get("/fetch-future-events", function(req, resp) {
+    let userEmail = req.query.email;
+    // Replace 'date' with the correct column name, possibly 'dob'
+    let query = "SELECT * FROM events WHERE email = ? ORDER BY dob ASC";
     
-    mysql.query("select * from events where email=? and dob>current_date()",[req.query.email],function(err,resultJsonAry){
-        if(err!=null)
-            {
-                resp.send(err.message);
-                return;
+    mysql.query(query, [userEmail], function(err, resultJsonAry) {
+        if (err) {
+            resp.status(500).send(err.message);
+            return;
+        }
+        resp.send(resultJsonAry);
+    });
+});
+app.get("/delete-future-events", function(req, resp) {
+    let email = req.query.email;
+    let timee = req.query.timee;
+    let dob = req.query.dob;
 
-            }
-           // console.log(resultJsonAry);
-            resp.send(resultJsonAry);//sending array of json object 0-1
-    })
+    console.log("Received delete request with params:", { email, timee, dob });
 
-})
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get("/delete-future-events",function(req,resp)
-{
-    mysql.query("delete from events where email=? and dob=? and timee=?",[req.query.email,req.query.dob,req.query.timee],function(err,resultJsonAry){
-        if(err!=null)
-            {
-                resp.send(err.message);
-                return;
+    let query = "DELETE FROM events WHERE email = ? AND dob = ? AND timee = ?";
+    
+    console.log("Delete query:", query);
+    console.log("Parameters:", [email, dob, timee]);
 
-            }
-            resp.send("Deleted");
-       
-    })
-
-})
+    mysql.query(query, [email, dob, timee], function(err, result) {
+        if (err) {
+            console.error("Delete error:", err);
+            resp.status(500).send(err.message);
+            return;
+        }
+        console.log("Delete result:", result);
+        resp.send("Deleted successfully");
+    });
+});
 // *************************************************************************************************
 app.post("/cprofile-save-details",function(req,resp)
 {

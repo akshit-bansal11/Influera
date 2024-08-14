@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventManagerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="eventsManager.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+  <!-- !HEADER -->
+  <header>
+
+    <!-- *Navbar -->
+    <nav class="navBar">
+      <div class=" navItem navBrand">
+        <img class="brandLogo" src="/Assets/Logo and Icons/brandLogo3.svg" alt="">
+        <a class="brandName" href="index.html" id="nav-text">Influera</a>
+      </div>
+      <ul class="navItem navLinks">
+        <li class="navLink">
+          <a href="/index.html#services">Services</a>
+        </li>
+        <li class="navLink">
+          <a href="/index.html#team">Team</a>
+        </li>
+        <li class="navLink">
+          <a href="/index.html#contact">Contact</a>
+        </li>
+      </ul>
+      <div class="navItem navButtons">
+        <input type="button" class="navButton" value="Logout" id="btnLogout" onclick="doLogout();">
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="heading">
+      <h1 class="eventsHeading">Your Events</h1>
+    </div>
+  </main>
+  
+
+  <div ng-controller="eventController" class="container">
+    <table class="table table-success table-striped table-hover">
+        <tr>
+            <th>Sr.No</th>
+            <th>Email ID</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Venue</th>
+            <th>Time</th>
+            <th>Delete</th>
+        </tr> 
+        <tr ng-repeat="obj in jsonArrayAll track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.eventt}}</td>
+            <td>{{obj.date | date}}</td>
+            <td>{{obj.venue}}</td>
+            <td>{{obj.timee}}</td>
+            <td>
+              <input type="button" value="Delete" ng-click="doDelete(obj.email, obj.timee, obj.dob);">
+            </td>
+        </tr>
+    </table>
+</div>
+  <!-- !FOOTER -->
+  <footer class="footer">
+    <div class="footerSection">
+      <h3 class="footerSectionHeading">Get in Touch</h3>
+      <p>Don't miss any updates of our new Website</p>
+      <div class="textInputWrapper">
+        <input placeholder="Email" type="text" class="textInput">
+      </div>
+    </div>
+    <div class="footerSection">
+      <h3 class="footerSectionHeading">Help & Support</h3>
+      <ul class="footerList list">
+          <li><a href="#">Customer Care</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Support Policy</a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footerSection">
+      <h3 class="footerSectionHeading">Reach us</h3>
+      <div class="reachUsMap">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3447.7542952132058!2d74.93402787135358!3d30.215559433750002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDEzJzA3LjAiTiA3NMKwNTUnNTguOSJF!5e0!3m2!1sen!2sin!4v1722438541250!5m2!1sen!2sin"
+          width="500"
+          height="200"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="eventsManager.js"></script>
+  <script type="text/javascript" src="../script.js"></script>
+</body>
+</html>
