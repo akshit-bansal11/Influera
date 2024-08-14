@@ -99,13 +99,13 @@ console.log("Hello");
                     
                     if(jsonAry[0].utype==="Influencer")
                     {
-                        location.href="./Influencer/influencerDashboard.html";
+                        location.href="/Influencer/influencerDashboard.html";
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
 
                     }
                     else if(jsonAry[0].utype==="Collaborator")
                     {
-                        location.href="./investor/investorDashboard.html"; 
+                        location.href="/investor/investorDashboard.html"; 
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
                     }
                 }
