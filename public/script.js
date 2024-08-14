@@ -105,7 +105,7 @@ console.log("Hello");
                     }
                     else if(jsonAry[0].utype==="Collaborator")
                     {
-                        location.href="/investor/investorDashboard.html"; 
+                        location.href="/Investor/investorDashboard.html"; 
                         localStorage.setItem("activeuser",$("#txtEmail_login").val());
                     }
                 }
