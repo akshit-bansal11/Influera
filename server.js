@@ -123,7 +123,7 @@ app.post("/iprofile-save-details",async function(req,resp)
     mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
     {
             if(err==null)
-                    resp.redirect("result.html");
+                    resp.redirect("/Result/result.html");
                 else
                     resp.send(err.message);
     })
@@ -148,7 +148,7 @@ app.post("/iprofile-update-details",function(req,resp)
         if(err==null)//no error
         {
                if(result.affectedRows>=1) 
-                resp.redirect("result.html");
+                resp.redirect("/Result/result.html");
                 else
                     resp.send("Invalid Email ID");
         }
