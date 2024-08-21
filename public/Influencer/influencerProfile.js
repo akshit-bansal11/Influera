@@ -1,16 +1,22 @@
 $(document).ready(function()
 {
     let active=localStorage.getItem("activeuser");
+    if(localStorage.getItem("activeuser")==null)
+    {
+        location.href="../index.html";
+        return;
+    }
+
     $("#txtEmail").val(active).prop("readonly",true);
     $(document).ajaxStart(function()
     {
         $("#bg").css("display","block");
         $("#wait").css("display","block");
-    })
+    });
     $(document).ajaxStop(function(){
         $("#wait").css("display","none");
         $("#bg").css("display","none");
-    })
+    });
 
     $("#btnEmail_infl").click(function(){
         console.log("JS SUcks");
@@ -28,9 +34,8 @@ $(document).ready(function()
                 alert("No Data Found");
                 return;
             }
-            // alert(JSON.stringify(jsonAry));
-            $("#txtPwd").val(jsonAry[0].pwd);//table colu. wala
-            $("#txtDob").val(jsonAry[0].dob.split("T")[0]);//table colu. wala
+            $("#txtPwd").val(jsonAry[0].pwd);
+            $("#txtDob").val(jsonAry[0].dob.split("T")[0]);
             $("#prev").prop("src",jsonAry[0].picpath);
             $("#prev").val(jsonAry[0].picpath);
             $("#txtName").val(jsonAry[0].iname);
@@ -48,18 +53,10 @@ $(document).ready(function()
         {
             alert(err.statusText);
         })
-    
     });
-})
 
-$(document).ready(function()
-{
-    if(localStorage.getItem("activeuser")==null)
-    {
-        location.href="../index.html";
-        return;
-    }
-})
+    
+});
 
 function doPrev(fileCtrl,imgPrev)
 {
