@@ -1,5 +1,6 @@
 :root {
-    --accentColor: deepskyblue;
+    --mainColor1: orange;
+    --mainColor2: deepskyblue;
 }
 
 * {
@@ -76,7 +77,7 @@ a {
         font-size: 1.25rem;
 
         &:hover {
-            color: deepskyblue;
+            color: var(--mainColor2);
         transition: all ease-in-out 100ms;
         }
 
@@ -91,12 +92,12 @@ a {
     .navButton {
         padding: .5rem 1rem;
         border-radius: .25rem;
-        background-color: orange;
+        background-color: var(--mainColor1);
         color: black;
         border: none;
 
         &:hover {
-            background-color: deepskyblue;
+            background-color: var(--mainColor2);
             color: black;
             transition: all ease-in-out 100ms;
         }
@@ -113,7 +114,7 @@ main {
 }
 
     .sectionHeading {
-        color: orange;
+        color: var(--mainColor1);
         margin-bottom: 2rem;
         padding: 0 0 0 1rem;
     }
@@ -148,11 +149,11 @@ main {
         padding: 1rem;
         display: flex;
         gap: .5rem;
-        border: solid deepskyblue 3px;
+        border: solid var(--mainColor2) 3px;
 
         &:hover {
-            border: solid orange 3px;
-            box-shadow: orange 0rem 0rem 1rem;
+            border: solid var(--mainColor1) 3px;
+            box-shadow: var(--mainColor1) 0rem 0rem 1rem;
             scale: 100%;
         }
 
@@ -161,7 +162,7 @@ main {
         }
 
         &:hover .cardTitle {
-            color: orange;
+            color: var(--mainColor1);
         }
     }
 
@@ -173,7 +174,7 @@ main {
     }
 
     .cardTitle {
-        color: deepskyblue;
+        color: var(--mainColor2);
         transition: all ease-in-out 200ms;
     }
 
@@ -229,15 +230,15 @@ main {
     }
 
     .footerSectionHeading {
-        color: orange;
+        color: var(--mainColor1);
     }
 
     /* ^Email Box */
     .textInputWrapper {
         position: relative;
         max-width: 100%;
-        --accent-color: orange;
-        border: solid orange 1px;
+        --accent-color: var(--mainColor1);
+        border: solid var(--mainColor1) 1px;
 
         &::before {
             transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -342,14 +343,14 @@ main {
     .footerButton {
         all: unset;
         width: max-content;
-        background-color: orange;
+        background-color: var(--mainColor1);
         color: black;
         padding: .5rem 1rem;
         border-radius: .2rem;
         transition: all 100ms ease;
 
         &:hover {
-            background-color: deepskyblue;
+            background-color: var(--mainColor2);
         }
 
         &:active {
@@ -369,7 +370,7 @@ main {
         color: white;
 
         &:hover {
-            color: deepskyblue;
+            color: var(--mainColor2);
             text-decoration: underline;
             cursor: pointer;
         }
@@ -395,20 +396,20 @@ main {
 
     .modal-content {
         background-color: #272727;
-        color: deepskyblue;
+        color: var(--mainColor2);
     }
 
     .modal-header {
-        border-bottom: solid orange .1rem;
+        border-bottom: solid var(--mainColor1) .1rem;
 
     }
 
     .btn-close {
-        background-color: orange;
+        background-color: var(--mainColor1);
     }
 
     .modal-title {
-        color: orange;
+        color: var(--mainColor1);
     }
 
     .form-text {
@@ -418,7 +419,7 @@ main {
     .form-control, .form-select {
         background-color: #343434;
         margin: 1rem 0 1rem 0;
-        border: solid orange .1rem;
+        border: solid var(--mainColor1) .1rem;
         color: white;
     }
 
@@ -432,7 +433,7 @@ main {
 
         &:focus {
             background-color: #555555;
-            border: solid orange .1rem;
+            border: solid var(--mainColor1) .1rem;
             color: white;
         }
     }
@@ -452,12 +453,12 @@ main {
     .modalButton {
         padding: .5rem 1rem;
         border-radius: .25rem;
-        background-color: orange;
+        background-color: var(--mainColor1);
         color: black;
         border: none;
 
         &:hover {
-            background-color: deepskyblue;
+            background-color: var(--mainColor2);
             color: black;
         }
     
