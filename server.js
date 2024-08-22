@@ -129,19 +129,23 @@ app.post("/iprofile-save-details",async function(req,resp)
     })
 })
 ///////////////////////////////////////////////////////////////////////////////////
-app.post("/iprofile-update-details",function(req,resp)
+app.post("/iprofile-update-details",async function(req,resp)
 {
     let fileName="";
     if(req.files!=null)
         {
-             fileName=req.files.ppic.name;
+            fileName=req.files.ppic.name;
             let path=__dirname+"/public/uploads/"+fileName;
             req.files.ppic.mv(path);
+
+            await cloudinary.uploader.upload(path)
+            .then(function(result) {
+
+                fileName = result.url;
+            })
         }
         else
-        {
-            fileName=req.body.hdn;
-        }
+        fileName="nopic.jpg";
 
     mysql.query("update iprofile set picpath=?, iname=? , gender=?, dob=? ,address=? ,city=? ,contact=? ,field=? ,insta=? ,yt=? ,other=? where email=?",[fileName,req.body.txtName,req.body.txtGender,req.body.txtDob,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther,req.body.txtEmail],function(err,result)
     {

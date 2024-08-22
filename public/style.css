@@ -222,6 +222,12 @@ main {
         column-gap: 1rem;
     }
 
+    .footerSection {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
     .footerSectionHeading {
         color: orange;
     }
@@ -331,6 +337,24 @@ main {
     
     .textInputWrapper:focus-within .textInput::placeholder {
         opacity: 0;
+    }
+
+    .footerButton {
+        all: unset;
+        width: max-content;
+        background-color: orange;
+        color: black;
+        padding: .5rem 1rem;
+        border-radius: .2rem;
+        transition: all 100ms ease;
+
+        &:hover {
+            background-color: deepskyblue;
+        }
+
+        &:active {
+            background-color: rgba(0, 191, 255, 0.867);
+        }
     }
 
     .footerList {

@@ -249,6 +249,12 @@ footer {
     column-gap: 1rem;
 }
 
+.footerSection {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .footerSectionHeading {
     color: orange;
 }
@@ -259,51 +265,61 @@ footer {
     max-width: 100%;
     --accent-color: orange;
     border: solid orange 1px;
-}
 
-.textInputWrapper:before {
-    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
-}
+    &::before {
+        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    }
 
-.textInputWrapper:before,
-.textInputWrapper:after {
-    content: "";
-    left: 0;
-    right: 0;
-    position: absolute;
-    pointer-events: none;
-    bottom: -1px;
-    z-index: 4;
-    width: 100%;
-}
+    &::before {
+        content: "";
+        left: 0;
+        right: 0;
+        position: absolute;
+        pointer-events: none;
+        bottom: -1px;
+        z-index: 4;
+        width: 100%;
+    }
 
-.textInputWrapper:focus-within:before {
-    border-bottom: 3px solid var(--accent-color);
-}
+    &::after {
+        content: "";
+        left: 0;
+        right: 0;
+        position: absolute;
+        pointer-events: none;
+        bottom: -1px;
+        z-index: 4;
+        width: 100%;
+    }
 
-.textInputWrapper:before {
-    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.42);
-}
-
-.textInputWrapper:focus-within:before {
-    border-bottom: 3px solid var(--accent-color);
-    transform: scaleX(1);
-}
-
-.textInputWrapper:focus-within:after {
-    border-bottom: 3px solid var(--accent-color);
-    transform: scaleX(1);
-}
-
-.textInputWrapper:after {
-    content: "";
-    transform: scaleX(0);
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    will-change: transform;
-    border-bottom: 3px solid var(--accent-color);
-    border-bottom-color: var(--accent-color);
+    &:focus-within:before {
+        border-bottom: 3px solid var(--accent-color);
+    }
+    
+    &::before {
+        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-bottom: 3px solid rgba(0, 0, 0, 0.42);
+    }
+    
+    &:focus-within:before {
+        border-bottom: 3px solid var(--accent-color);
+        transform: scaleX(1);
+    }
+    
+    &:focus-within:after {
+        border-bottom: 3px solid var(--accent-color);
+        transform: scaleX(1);
+    }
+    
+    &::after {
+        content: "";
+        transform: scaleX(0);
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        will-change: transform;
+        border-bottom: 3px solid var(--accent-color);
+        border-bottom-color: var(--accent-color);
+    }
 }
 
 .textInput::placeholder {
@@ -329,11 +345,15 @@ footer {
     border-left: none;
     border-bottom: none;
     border-right: none;
-}
 
-.textInputWrapper .textInput:focus,
-.textInputWrapper .textInput:active {
-    outline: none;
+    &:active {
+        outline: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
 }
 
 .textInputWrapper:focus-within .textInput,
@@ -346,6 +366,24 @@ footer {
     opacity: 0;
 }
 
+.footerButton {
+    all: unset;
+    width: max-content;
+    background-color: orange;
+    color: black;
+    padding: .5rem 1rem;
+    border-radius: .2rem;
+    transition: all 100ms ease;
+
+    &:hover {
+        background-color: deepskyblue;
+    }
+
+    &:active {
+        background-color: rgba(0, 191, 255, 0.867);
+    }
+}
+
 .footerList {
     list-style: none;
     display: flex;
@@ -356,14 +394,13 @@ footer {
 
 .footerList li a {
     color: white;
-}
 
-.footerList li a:hover {
-    color: deepskyblue;
-    text-decoration: underline;
-    cursor: pointer;
+    &:hover {
+        color: deepskyblue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
-
 
 .reachUsmap {
     position: relative;
