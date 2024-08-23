@@ -41,6 +41,7 @@ $(document).ready(function()
             $("#txtName").val(jsonAry[0].iname);
             $("#txtGender").val(jsonAry[0].gender);
             $("#txtAdd").val(jsonAry[0].address);
+            $("#txtState").val(jsonAry[0].state);
             $("#txtCity").val(jsonAry[0].city);
             $("#txtContact").val(jsonAry[0].contact);
             $("#txtField").val(jsonAry[0].field.split(","));

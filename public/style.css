@@ -27,6 +27,10 @@ a {
     text-decoration: none;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    text-wrap: pretty;
+}
+
 /* !Header */
 
     /* *NavBar */
@@ -191,6 +195,8 @@ main {
         align-content: space-between;
         align-items: start;
         flex-wrap: wrap;
+        animation: fadeOutServices 2s forwards;
+        animation-timeline: scroll();
     }
 
     .serviceCard {
@@ -201,14 +207,38 @@ main {
         font-size: 2rem;
     }
 
+    @keyframes fadeOutServices {
+
+        0% {
+            opacity: 100%;
+        }
+        100% {
+            opacity: 0%;
+        }
+        
+    }
+
     /* *Team */
 
     .teamCard {
         max-width: 20rem;
+        animation: fadeOutTeam 2s forwards;
+        animation-timeline: scroll();
     }
     
     .teamTitle {
         font-size: 1.5rem;
+    }
+
+    @keyframes fadeOutTeam {
+
+        0% {
+            opacity: 0%;
+        }
+        100% {
+            opacity: 100%;
+        }
+        
     }
 /* !Footer */
 

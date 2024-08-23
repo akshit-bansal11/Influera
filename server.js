@@ -120,7 +120,7 @@ app.post("/iprofile-save-details",async function(req,resp)
 
         var txtDOB = (req.body.txtDob).split("T")[0];
    
-    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
+    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtState,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
     {
             if(err==null)
                     resp.redirect("/Result/result.html");
@@ -147,7 +147,7 @@ app.post("/iprofile-update-details",async function(req,resp)
         else
         fileName="nopic.jpg";
 
-    mysql.query("update iprofile set picpath=?, iname=? , gender=?, dob=? ,address=? ,city=? ,contact=? ,field=? ,insta=? ,yt=? ,other=? where email=?",[fileName,req.body.txtName,req.body.txtGender,req.body.txtDob,req.body.txtAdd,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther,req.body.txtEmail],function(err,result)
+    mysql.query("update iprofile set picpath=?, iname=? , gender=?, dob=? ,address=? ,state=? ,city=? ,contact=? ,field=? ,insta=? ,yt=? ,other=? where email=?",[fileName,req.body.txtName,req.body.txtGender,req.body.txtDob,req.body.txtAdd,req.body.txtState,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther,req.body.txtEmail],function(err,result)
     {
         if(err==null)//no error
         {
