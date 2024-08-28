@@ -123,19 +123,6 @@ main {
         padding: 0 0 0 1rem;
     }
 
-    /* *Carousel */
-
-    .carousel {
-        min-width: 30rem;
-        max-width: 60rem;
-        padding: 0 10rem;
-        margin: 2rem auto;
-    }
-
-    .carouselImage {
-        height: 20rem;
-    }
-
     /* *Cards */
 
     .cardsContainer {
@@ -496,4 +483,14 @@ main {
             background-color: rgba(0, 191, 255, 0.797);
         }
 
+    }
+
+    .emailValidMessage {
+        color: rgb(246, 255, 0);
+        font-size: .7rem;
+    }
+
+    .emailValidMessageLogin {
+        color: rgb(246, 255, 0);
+        font-size: .7rem;
     }

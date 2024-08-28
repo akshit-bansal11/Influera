@@ -262,7 +262,7 @@
                 pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                 required
               >
-              <p id="result"></p>
+              <p class="emailValidMessage" id="emailValidMessage"></p>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
@@ -296,7 +296,16 @@
           <form method="post">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label" >Email address</label>
-              <input type="email" class="form-control" name="txtEmail_login" id="txtEmail_login" aria-describedby="emailHelp">
+              <input 
+                type="email" 
+                name="txtEmail_login"
+                class="form-control"
+                id="txtEmail_login"
+                aria-describedby="emailHelp"
+                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                required
+              >
+              <p class="emailValidMessageLogin" id="emailValidMessageLogin"></p>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">

@@ -36,6 +36,7 @@ $(document).ready(function()
             }
             $("#txtPwd").val(jsonAry[0].pwd);
             $("#txtDob").val(jsonAry[0].dob.split("T")[0]);
+            console.log(jsonAry[0].picpath);
             $("#prev").prop("src",jsonAry[0].picpath);
             $("#prev").val(jsonAry[0].picpath);
             $("#txtName").val(jsonAry[0].iname);
@@ -54,6 +55,14 @@ $(document).ready(function()
         {
             alert(err.statusText);
         })
+    });
+
+    $('#txtContact').on('input', function() {
+        let value = $(this).val();
+        // Allow only numbers and '+' at the beginning
+        if (!/^\+?[0-9]*$/.test(value)) {
+            $(this).val(value.slice(0, -1)); // Remove last entered character
+        }
     });
 
     

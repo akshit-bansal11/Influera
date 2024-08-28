@@ -140,6 +140,7 @@ label {
     background-color: #343434;
     border: solid orange .1rem;
     color: white;
+    color-scheme: dark;
 }
 
 .form-select, .form-control {

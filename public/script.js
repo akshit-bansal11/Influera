@@ -15,6 +15,32 @@ $(document).ready(function()
         }
     });
 
+    
+    var isValidEmail1;
+    $("#txtEmail_signup").on("input", function() {
+        var email1 = $(this).val();
+        if (email1 === "" || !email1.includes("@") || !email1.includes(".com")) {
+            $("#emailValidMessage").text("!!!Please enter a valid email address!!!");
+            isValidEmail1 = false;
+        } else {
+            $("#emailValidMessage").text("");
+            isValidEmail1 = true;
+        }
+    });
+
+    var isValidEmail2;
+    $("#txtEmail_login").on("input", function() {
+        var email2 = $(this).val();
+        if (email2 === "" || !email2.includes("@") || !email2.includes(".com")) {
+            $("#emailValidMessageLogin").text("!!!Please enter a valid email address!!!");
+            isValidEmail2 = false;
+        } else {
+            $("#emailValidMessageLogin").text("");
+            isValidEmail2 = true;
+        }
+    });
+    
+
     $("#txtPwd_signup").blur(function()
     {
         if($(this).val()=="")
@@ -57,64 +83,80 @@ $(document).ready(function()
 
     $("#btnSignup").click(function()
     {
-        let obj={
-            type:"get",
-            url:"/signup-details",
-            data:{
-                txtEmail:$("#txtEmail_signup").val(),
-                txtPwd:$("#txtPwd_signup").val(),
-                utype:$("#utype").val(),
-                status:1
-            }
+        if (!isValidEmail1) {
+            alert("Please enter a valid email address.");
+            return false;
         }
-        $.ajax(obj).done(function(resp)
-        {
-            alert(resp);
-        }).fail(function(err)
-        {
-            alert(err.statusText);
-        })
+        else {
+            let obj={
+                type:"get",
+                url:"/signup-details",
+                data:{
+                    txtEmail:$("#txtEmail_signup").val(),
+                    txtPwd:$("#txtPwd_signup").val(),
+                    utype:$("#utype").val(),
+                    status:1
+                }
+            }
+            $.ajax(obj).done(function(resp)
+            {
+                alert(resp);
+            }).fail(function(err)
+            {
+                alert(err.statusText);
+            })
+        }
+        
+
+        
     });
 
     $("#btnLogin").click(function(){
-        let obj={
-            type:"get",
-            url:"/check-login-details",
-            data:{
-                txtEmail:$("#txtEmail_login").val(),
-                txtPwd:$("#txtPwd_login").val()
-            }
+        if (!isValidEmail2) {
+            alert("Please enter a valid email address.");
+            return false;
         }
-        $.ajax(obj).done(function(jsonAry)
-        {
-            if($.isEmptyObject(jsonAry))
-            {
-                alert("Invalid User Cridentials");
+        else {
+            let obj={
+                type:"get",
+                url:"/check-login-details",
+                data:{
+                    txtEmail:$("#txtEmail_login").val(),
+                    txtPwd:$("#txtPwd_login").val()
+                }
             }
-            else
+            $.ajax(obj).done(function(jsonAry)
             {
-                if(jsonAry[0].status==1)
+                if($.isEmptyObject(jsonAry))
                 {
-                    if(jsonAry[0].utype==="Influencer")
-                    {
-                        location.href="/Influencer/influencerDashboard.html";
-                        localStorage.setItem("activeuser",$("#txtEmail_login").val());
-                    }
-                    else if(jsonAry[0].utype==="Collaborator")
-                    {
-                        location.href="/Investor/investorDashboard.html"; 
-                        localStorage.setItem("activeuser",$("#txtEmail_login").val());
-                    }
+                    alert("Invalid User Cridentials");
                 }
                 else
                 {
-                    alert("Blocked...");
+                    if(jsonAry[0].status==1)
+                    {
+                        if(jsonAry[0].utype==="Influencer")
+                        {
+                            location.href="/Influencer/influencerDashboard.html";
+                            localStorage.setItem("activeuser",$("#txtEmail_login").val());
+                        }
+                        else if(jsonAry[0].utype==="Collaborator")
+                        {
+                            location.href="/Investor/investorDashboard.html"; 
+                            localStorage.setItem("activeuser",$("#txtEmail_login").val());
+                        }
+                    }
+                    else
+                    {
+                        alert("Blocked...");
+                    }
                 }
-            }
-        }).fail(function(err)
-        {
-            alert(err.statusText);
-        })
+            }).fail(function(err)
+            {
+                alert(err.statusText);
+            })
+        }
+        
     });
 
     $("#btnSettings_update").click(function(){

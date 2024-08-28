@@ -12,6 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="influencerProfile.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
 
 </head>
 
@@ -72,15 +73,15 @@
         </div>
         <div class="gender">
           <label for="txtGender">Gender</label>
-          <select id="txtGender" name="txtGender" class="form-select">
-              <option value="none">Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-          </select>
+          <input  id="txtGender" name="txtGender" class="form-select" type="text" list="genderList" required>
+          <datalist id="genderList" value="">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </datalist>
         </div>
         <div class="dob">
           <label for="txtDob">Date of Birth</label>
-          <input type="date" placeholder="Date of Birth" class="form-select" id="txtDob" name="txtDob">
+          <input type="date" placeholder="Date of Birth" class="form-select" id="txtDob" name="txtDob" required>
         </div>
         <div class="address">
           <label for="txtAdd">Address</label>
@@ -89,7 +90,7 @@
       
         <div class="State">
           <label for="txtState">State</label>
-          <input type="text" class="form-select" id="txtState" name="txtState" list="States">
+          <input type="text" class="form-select" id="txtState" name="txtState" list="States" required>
           <datalist id="States" value="">
             <option value="AN">Andaman and Nicobar Islands</option>
             <option value="AP">Andhra Pradesh</option>
@@ -131,7 +132,7 @@
           </datalist>
 
           <label for="txtCity">City</label>
-          <input type="text" list="cities" class="form-select" id="txtCity" name="txtCity" >
+          <input type="text" list="cities" class="form-select" id="txtCity" name="txtCity" required>
           <datalist id="cities" value="">
             <option value="Adilabad">Adilabad</option>
             <option value="Agra">Agra</option>
@@ -765,17 +766,10 @@
             <option value="Yavatmal">Yavatmal</option>
             <option value="Zunheboto">Zunheboto</option>
           </datalist>
-          <!-- <select class="form-select" id="txtCity" name="txtCity">
-            <option value="none">Select</option>
-            <option value="Barnala">Barnala</option>
-            <option value="Bathinda">Bathinda</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Patiala">Patiala</option>
-          </select> -->
         </div>
         <div class="field">
           <label for="txtField">Field</label>
-          <select class="form-select" name="txtField" id="txtField" multiple size="8">
+          <select class="form-select" name="txtField" id="txtField" multiple size="8" required>
             <option value="Fashion">Fashion/lifestyle</option>
             <option value="Travel">Travel</option>
             <option value="Food">Food</option>
@@ -790,7 +784,15 @@
         </div>
         <div class="mobile">
           <label for="txtContact">Contact No.</label>
-          <input type="text" class="form-control" id="txtContact" name="txtContact">
+          <input
+            type="text"
+            class="form-control"
+            id="txtContact"
+            name="txtContact"
+            pattern="[+]?[0-9]*"
+            title="Only numbers and '+' are allowed"
+            required
+          >
         </div>
         <div class="instagram">
           <label for="txtInsta">Instagram</label>
