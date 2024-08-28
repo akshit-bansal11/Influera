@@ -19,7 +19,7 @@ $(document).ready(function()
     var isValidEmail1;
     $("#txtEmail_signup").on("input", function() {
         var email1 = $(this).val();
-        if (email1 === "" || !email1.includes("@") || !email1.includes(".com")) {
+        if (email1 === "" || !email1.includes("@") || !email1.includes(".")) {
             $("#emailValidMessage").text("!!!Please enter a valid email address!!!");
             isValidEmail1 = false;
         } else {
@@ -31,7 +31,7 @@ $(document).ready(function()
     var isValidEmail2;
     $("#txtEmail_login").on("input", function() {
         var email2 = $(this).val();
-        if (email2 === "" || !email2.includes("@") || !email2.includes(".com")) {
+        if (email2 === "" || !email2.includes("@") || !email2.includes(".")) {
             $("#emailValidMessageLogin").text("!!!Please enter a valid email address!!!");
             isValidEmail2 = false;
         } else {

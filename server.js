@@ -79,32 +79,125 @@ app.get("/check-login-details",function(req,resp)
     })
 
 })
-app.post("/iprofile-save-details",async function(req,resp)
-{
-    let fileName="";
-    if(req.files!=null)
-    {
-        fileName=req.files.ppic.name;
-        let path=__dirname+"/public/uploads/"+fileName;
+// app.post("/iprofile-save-details",async function(req,resp)
+// {
+//     let fileName="";
+//     if(req.files!=null)
+//     {
+//         fileName=req.files.ppic.name;
+//         let path=__dirname+"/public/uploads/"+fileName;
+//         req.files.ppic.mv(path);
+//         await cloudinary.uploader.upload(path)
+//         .then(function(result) {
+//             fileName = result.url;
+//         })
+//     }
+//     else
+//         fileName="/Assets/Illustrations/60111.jpg";
+
+//     var txtDOB = (req.body.txtDob).split("T")[0];
+
+//     mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtState,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
+//     {
+//         if(err==null)
+//             resp.redirect("/Result/result.html");
+//         else
+//             resp.send(err.message);
+//     })
+// })
+
+app.post("/iprofile-save-details", async function(req, resp) {
+    let fileName = "";
+    if (req.files != null) {
+        fileName = req.files.ppic.name;
+        let path = __dirname + "/public/uploads/" + fileName;
         req.files.ppic.mv(path);
         await cloudinary.uploader.upload(path)
         .then(function(result) {
             fileName = result.url;
-        })
+        });
+    } else {
+        fileName = "/Assets/Illustrations/60111.jpg";
     }
-    else
-        fileName="/Assets/Illustrations/60111.jpg";
 
     var txtDOB = (req.body.txtDob).split("T")[0];
 
-    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.txtEmail,fileName,req.body.txtName,req.body.txtGender,txtDOB,req.body.txtAdd,req.body.txtState,req.body.txtCity,req.body.txtContact,req.body.txtField.toString(),req.body.txtInsta,req.body.txtYt,req.body.txtOther],function(err)
-    {
-        if(err==null)
-            resp.redirect("/Result/result.html");
-        else
-            resp.send(err.message);
-    })
-})
+    mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?,?)", 
+        [req.body.txtEmail, fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther], 
+        function(err) {
+            if (err == null) {
+                resp.send(`<script>
+                            alert('Profile Saved');
+                            window.location.href='/Influencer/influencerDashboard.html';
+                            </script>`);
+            } else {
+                resp.send(err.message);
+            }
+        }
+    );
+});
+
+
+// app.post("/iprofile-update-details", async function(req, resp) {
+//     let fileName = "";
+//     if (req.files != null) {
+//         fileName = req.files.ppic.name;
+//         let path = __dirname + "/public/uploads/" + fileName;
+//         req.files.ppic.mv(path);
+//         await cloudinary.uploader.upload(path)
+//         .then(function(result) {
+//             fileName = result.url;
+//         });
+//     }
+
+//     if (fileName === "") {
+//         // Preserve existing picture path if no new file is uploaded
+//         mysql.query("SELECT picpath FROM iprofile WHERE email=?", [req.body.txtEmail], function(err, result) {
+//             if (err == null && result.length > 0) {
+//                 fileName = result[0].picpath || "/Assets/Illustrations/60111.jpg";
+
+//                 // Proceed with the update after ensuring the correct picpath is used
+//                 var txtDOB = (req.body.txtDob).split("T")[0];
+//                 mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?",
+//                 [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail],
+//                 function(err, result) {
+//                     if (err == null) {
+//                         if (result.affectedRows >= 1) {
+//                             console.log("Profile updated successfully with image path: ", fileName);
+//                             resp.redirect("/Result/result.html");
+//                         } else {
+//                             resp.send("Invalid Email ID");
+//                         }
+//                     } else {
+//                         console.error("Error during update: ", err.message);
+//                         resp.send(err.message);
+//                     }
+//                 });
+//             } else {
+//                 resp.send("Error retrieving existing profile picture.");
+//             }
+//         });
+//     } else {
+//         // If fileName is set (new image uploaded), proceed with update directly
+//         var txtDOB = (req.body.txtDob).split("T")[0];
+//         mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?",
+//         [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail],
+//         function(err, result) {
+//             if (err == null) {
+//                 if (result.affectedRows >= 1) {
+//                     console.log("Profile updated successfully with image path: ", fileName);
+//                     resp.redirect("/Result/result.html");
+//                 } else {
+//                     resp.send("Invalid Email ID");
+//                 }
+//             } else {
+//                 console.error("Error during update: ", err.message);
+//                 resp.send(err.message);
+//             }
+//         });
+//     }
+// });
+
 app.post("/iprofile-update-details", async function(req, resp) {
     let fileName = "";
     if (req.files != null) {
@@ -118,61 +211,48 @@ app.post("/iprofile-update-details", async function(req, resp) {
     }
 
     if (fileName === "") {
-        // Preserve existing picture path if no new file is uploaded
         mysql.query("SELECT picpath FROM iprofile WHERE email=?", [req.body.txtEmail], function(err, result) {
             if (err == null && result.length > 0) {
                 fileName = result[0].picpath || "/Assets/Illustrations/60111.jpg";
-
-                // Proceed with the update after ensuring the correct picpath is used
                 var txtDOB = (req.body.txtDob).split("T")[0];
-                mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?",
-                [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail],
-                function(err, result) {
-                    if (err == null) {
-                        if (result.affectedRows >= 1) {
-                            console.log("Profile updated successfully with image path: ", fileName);
-                            resp.redirect("/Result/result.html");
+                mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?", 
+                    [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail], 
+                    function(err, result) {
+                        if (err == null && result.affectedRows >= 1) {
+                            resp.send(`<script>
+                                        alert('Changes Saved');
+                                        window.location.href='/Influencer/influencerDashboard.html';
+                                        </script>`);
                         } else {
                             resp.send("Invalid Email ID");
                         }
-                    } else {
-                        console.error("Error during update: ", err.message);
-                        resp.send(err.message);
                     }
-                });
+                );
             } else {
                 resp.send("Error retrieving existing profile picture.");
             }
         });
     } else {
-        // If fileName is set (new image uploaded), proceed with update directly
         var txtDOB = (req.body.txtDob).split("T")[0];
-        mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?",
-        [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail],
-        function(err, result) {
-            if (err == null) {
-                if (result.affectedRows >= 1) {
-                    console.log("Profile updated successfully with image path: ", fileName);
-                    resp.redirect("/Result/result.html");
+        mysql.query("update iprofile set picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? where email=?", 
+            [fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(), req.body.txtInsta, req.body.txtYt, req.body.txtOther, req.body.txtEmail], 
+            function(err, result) {
+                if (err == null && result.affectedRows >= 1) {
+                    resp.send(`<script>
+                                alert('Changes Saved');
+                                window.location.href='/Influencer/influencerDashboard.html';
+                                </script>`);
                 } else {
                     resp.send("Invalid Email ID");
                 }
-            } else {
-                console.error("Error during update: ", err.message);
-                resp.send(err.message);
             }
-        });
+        );
     }
 });
 
-    
-
-
-//Search Email id-Influencer
 app.get("/find-user-details",function(req,resp)
 {
     let email= req.query.txtEmail;
-   
     mysql.query("select * from iprofile where email=?",[email],function(err,resultJsonAry){
         if(err!=null)
             {
@@ -186,60 +266,57 @@ app.get("/find-user-details",function(req,resp)
 
 })
 
-//***************************************************************************/
 app.get("/post-event-details",function(req,resp)
- {
-     let txtEmail = req.query.txtEmail;
-     let txtPwd = req.query.txtPwd;
-     let txtEvent = req.query.txtEvent;
-     let txtDate = (req.body.txtDate).split("T")[0];
-     let txtTime = req.query.txtTime;
-     let txtVenue = req.query.txtVenue;
-     mysql.query("insert into events values(null,?,?,?,?,?,?)",[txtEmail,txtPwd,txtEvent,txtDate,txtTime,txtVenue],function(err)
+{
+    let txtEMAIL = req.query.txtEmail;
+    let txtPWD = req.query.txtPwd;
+    let txtEVENT = req.query.txtEvent;
+    let txtDATE = (req.body.txtDate).split("T")[0];
+    let txtTIME = req.query.txtTime;
+    let txtVENUE = req.query.txtVenue;
+    mysql.query("insert into events values(null,?,?,?,?,?,?)",[txtEMAIL,txtPWD,txtEVENT,txtDATE,txtTIME,txtVENUE],function(err)
     {
-         if(err==null)
-         {
+        if(err==null)
+        {
             console.log(txtEmail,txtPwd,txtEvent,txtDate,txtTime,txtVenue); 
             resp.send("Your Record is Successfully Saved");
-         }
-         else
-             resp.send(err.message);
+        }
+        else
+            resp.send(err.message);
     })
- })
+})
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 app.get("/update-login-details-settings",function(req,resp)
- {
-     let txtEmail = req.query.txtEmail;
-     let txtPwd = req.query.txtPwd;
-     let txtoldPwd = req.query.txtoldPwd;
-     let txtnewPwd = req.query.txtnewPwd;
-     let txtrepPwd = req.query.txtrepPwd;
-     if(txtnewPwd===txtrepPwd)
-     {
-         mysql.query("update users set pwd=? where email=? and pwd=?",[txtnewPwd,txtEmail,txtoldPwd],function(err,result)
-         {
-         if(err==null)//no error
-         {
+{
+    let txtEmail = req.query.txtEmail;
+    let txtPwd = req.query.txtPwd;
+    let txtoldPwd = req.query.txtoldPwd;
+    let txtnewPwd = req.query.txtnewPwd;
+    let txtrepPwd = req.query.txtrepPwd;
+    if(txtnewPwd===txtrepPwd)
+    {
+        mysql.query("update users set pwd=? where email=? and pwd=?",[txtnewPwd,txtEmail,txtoldPwd],function(err,result)
+        {
+            if(err==null)//no error
+            {
                 if(result.affectedRows>=1) 
                     resp.send("Updated  Successfulllyyyy....");
-                 else
-                     resp.send("Invalid Email ID");
-         }
-         else
-         resp.send(err.message);
-       })
-  
+                else
+                    resp.send("Invalid Email ID");
+            }
+            else
+                resp.send(err.message);
+        })
     }
     else
     {
         resp.send("Invalid user Cridentials...");
     }
-     
- })
- //*********************************************************************************/
- app.post("/login-forget-password",function(req,resp)
- {
+})
+
+app.post("/login-forget-password",function(req,resp)
+{
     let email=req.body.txtEmail_login;
     let txtPwd_forget="hello";
     mysql.query("select pwd from users where email=?",[email],function(err,resultJsonAry){
