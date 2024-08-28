@@ -47,6 +47,8 @@ app.get("/",function(req,resp)
     resp.sendFile(path);
 })
 
+// !index
+
 app.get("/signup-details",function(req,resp)
 {
     let txtEmail = req.query.txtEmail;
@@ -79,6 +81,8 @@ app.get("/check-login-details",function(req,resp)
     })
 
 })
+
+// !influencerProfile
 // app.post("/iprofile-save-details",async function(req,resp)
 // {
 //     let fileName="";
@@ -266,37 +270,66 @@ app.get("/find-user-details",function(req,resp)
 
 })
 
-app.get("/post-event-details",function(req,resp)
-{
+app.get("/post-event-details", function(req, resp) {
     let txtEMAIL = req.query.txtEmail;
-    let txtPWD = req.query.txtPwd;
     let txtEVENT = req.query.txtEvent;
-    let txtDATE = (req.body.txtDate).split("T")[0];
+    let txtDATE = req.query.txtDate;
     let txtTIME = req.query.txtTime;
     let txtVENUE = req.query.txtVenue;
-    mysql.query("insert into events values(null,?,?,?,?,?,?)",[txtEMAIL,txtPWD,txtEVENT,txtDATE,txtTIME,txtVENUE],function(err)
-    {
-        if(err==null)
-        {
-            console.log(txtEmail,txtPwd,txtEvent,txtDate,txtTime,txtVenue); 
+    mysql.query("insert into events values(null,?,?,?,?,?)", [txtEMAIL, txtEVENT, txtDATE, txtTIME, txtVENUE], function(err) {
+        if (err == null) {
+            console.log(txtEMAIL, txtEVENT, txtDATE, txtTIME, txtVENUE); 
             resp.send("Your Record is Successfully Saved");
-        }
-        else
+        } else {
             resp.send(err.message);
+        }
     })
 })
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// !eventsManager
+
+app.get("/fetch-future-events", function(req, resp) {
+    let userEmail = req.query.email;
+    let query = "SELECT * FROM events WHERE email = ? ORDER BY date ASC";
+    
+    mysql.query(query, [userEmail], function(err, resultJsonAry) {
+        if (err) {
+            resp.status(500).send(err.message);
+            return;
+        }
+        resp.send(resultJsonAry);
+    });
+});
+
+app.get("/delete-future-events", function(req, resp) {
+    let userEmail = req.query.email;
+
+    let query = "DELETE FROM events WHERE email = ?";
+
+    mysql.query(query, [userEmail], function(err, result) {
+        if (err) {
+            console.error("Delete error:", err);
+            resp.status(500).send(err.message);
+            return;
+        }
+        console.log("Delete result:", result);
+        if (result.affectedRows > 0) {
+            resp.send("Event deleted successfully");
+        } else {
+            resp.status(404).send("Event not found");
+        }
+    });
+});
+
 app.get("/update-login-details-settings",function(req,resp)
 {
     let txtEmail = req.query.txtEmail;
-    let txtPwd = req.query.txtPwd;
-    let txtoldPwd = req.query.txtoldPwd;
+    let txtPWD = req.query.txtPwd;
     let txtnewPwd = req.query.txtnewPwd;
     let txtrepPwd = req.query.txtrepPwd;
     if(txtnewPwd===txtrepPwd)
     {
-        mysql.query("update users set pwd=? where email=? and pwd=?",[txtnewPwd,txtEmail,txtoldPwd],function(err,result)
+        mysql.query("update users set pwd=? where email=? and pwd=?",[txtnewPwd,txtEmail,txtPWD],function(err,result)
         {
             if(err==null)//no error
             {
@@ -483,41 +516,7 @@ app.get("/fetch-some-name",function(req,resp)
     })
 
 })
-app.get("/fetch-future-events", function(req, resp) {
-    let userEmail = req.query.email;
-    // Replace 'date' with the correct column name, possibly 'dob'
-    let query = "SELECT * FROM events WHERE email = ? ORDER BY dob ASC";
-    
-    mysql.query(query, [userEmail], function(err, resultJsonAry) {
-        if (err) {
-            resp.status(500).send(err.message);
-            return;
-        }
-        resp.send(resultJsonAry);
-    });
-});
-app.get("/delete-future-events", function(req, resp) {
-    let email = req.query.email;
-    let timee = req.query.timee;
-    let dob = req.query.dob;
 
-    console.log("Received delete request with params:", { email, timee, dob });
-
-    let query = "DELETE FROM events WHERE email = ? AND dob = ? AND timee = ?";
-    
-    console.log("Delete query:", query);
-    console.log("Parameters:", [email, dob, timee]);
-
-    mysql.query(query, [email, dob, timee], function(err, result) {
-        if (err) {
-            console.error("Delete error:", err);
-            resp.status(500).send(err.message);
-            return;
-        }
-        console.log("Delete result:", result);
-        resp.send("Deleted successfully");
-    });
-});
 // *************************************************************************************************
 app.post("/cprofile-save-details",function(req,resp)
 {
