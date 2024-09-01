@@ -42,29 +42,29 @@
       <h1 class="eventsHeading">Your Events</h1>
     </div>
     <div ng-controller="eventController" class="container">
-    <table class="eventsTable">
-        <tr>
-            <th>Sr.No</th>
-            <th>Email ID</th>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Venue</th>
-            <th>Time</th>
-            <th>Delete</th>
-        </tr> 
-        <tr ng-repeat="obj in jsonArrayAll track by $index">
-            <td>{{$index + 1}}</td>
-            <td>{{obj.email}}</td>
-            <td>{{obj.eventt}}</td>
-            <td>{{obj.date | date}}</td>
-            <td>{{obj.venue}}</td>
-            <td>{{obj.timee}}</td>
-            <td>
-              <input type="button" value="Delete" ng-click="doDelete(obj.email, obj.timee, obj.dob);">
-            </td>
-        </tr>
-    </table>
-</div>
+      <table class="eventsTable">
+          <tr>
+              <th>Sr.No</th>
+              <th>Email ID</th>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Venue</th>
+              <th>Time</th>
+              <th>Delete</th>
+          </tr> 
+          <tr ng-repeat="obj in jsonArrayAll track by $index">
+              <td>{{$index + 1}}</td>
+              <td>{{obj.email}}</td>
+              <td>{{obj.eventt}}</td>
+              <td>{{obj.date | date}}</td>
+              <td>{{obj.venue}}</td>
+              <td>{{obj.timee}}</td>
+              <td>
+                <input type="button" value="Delete" ng-click="doDelete(obj.email, obj.timee, obj.dob);">
+              </td>
+          </tr>
+      </table>
+    </div>
   </main>
   
 
