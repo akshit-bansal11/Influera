@@ -108,39 +108,61 @@ a {
 /* !MAIN */
 
 main {
-    padding: 2rem 0;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+}
+
+.backButton {
+    all: unset;
+    background-color: orange;
+    padding: .2rem .6rem;
+    border-radius: 50%;
+    color: #272727;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 50%;
+    transition: opacity 300ms ease;
+
+    &:hover {
+        opacity: 100%;
+    }
+
+    &:active {
+        background-color: rgba(255, 166, 0, 0.863);
+    }
 }
 
 .profileHeading {
     color: orange;
     padding: 0;
     margin: 0;
-    padding-left: 2rem;
 }
 
 form {
     display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(auto-fit, minmax(1rem, 25rem));
-    justify-content: space-around;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     row-gap: 2rem;
-    column-gap: 2rem;
+    padding: 3rem;
+    border-radius: 3rem;
+    background-color: #272727;
+    box-shadow: 0px 0px 1rem rgba(255, 255, 255, 0.36);
+    margin: 0 10rem;
 }
 
 label {
-    color: deepskyblue;
-    margin: 1rem 0;
+    color: var(--accentColor);
+    margin-bottom: 1rem;
 }
 
 .form-control, .form-select {
     background-color: #343434;
-    border: solid orange .1rem;
+    border: solid orange 0.1rem;
     color: white;
-    color-scheme: dark;
+    padding: 0.5rem;
+    border-radius: 4px;
 }
 
 .form-select, .form-control {
@@ -168,7 +190,7 @@ label {
 
 .email {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
 }
 
 .field {
@@ -181,11 +203,15 @@ input[type="file"] {
 }
 
 .profilePic {
+    grid-column: span 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
+}
+
+.profilePic img {
+    margin-bottom: 1rem;
 }
 
 .profileButtons {
@@ -219,23 +245,34 @@ input[type="file"] {
     background-color: rgba(0, 191, 255, 0.826);
 }
 
+.buttons {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+}
+
 .saveButton, .updateButton {
-    padding: .5rem 1rem;
-    border-radius: .25rem;
-    background-color: orange;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: var(--accentColor);
     color: black;
     border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
 }
 
 .saveButton:hover, .updateButton:hover {
-    background-color: deepskyblue;
-    color: black;
-    transition: all ease-in-out 100ms;
+    background-color: orange;
 }
 
 .saveButton:active, .updateButton:active {
     background-color: rgba(0, 191, 255, 0.826);
 }
+
+
 
 /* !Footer */
 

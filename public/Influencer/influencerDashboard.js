@@ -48,6 +48,28 @@ $(document).ready(function()
     
     });
 
+    $("#btnSettings_update").click(function(){
+            
+        let obj={
+            type:"get",
+            url:"/update-login-details-settings",
+            data:{
+                txtEmail:$("#txtEmail_settings").val(),
+                txtoldPwd:$("#txtPwd_old_settings").val(),
+                txtnewPwd:$("#txtPwd_new_settings").val(),
+                txtrepPwd:$("#txtPwd_rep_settings").val()
+            }
+        }
+        $.ajax(obj).done(function(resp)
+        {
+            alert(resp);
+        }).fail(function(err)
+        {
+            alert(err.statusText);
+        })
+
+    });
+
     if(localStorage.getItem("activeuser")==null)
     {
         location.href="/index.html";

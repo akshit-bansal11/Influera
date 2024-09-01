@@ -323,18 +323,18 @@ app.get("/delete-future-events", function(req, resp) {
 
 app.get("/update-login-details-settings",function(req,resp)
 {
-    let txtEmail = req.query.txtEmail;
-    let txtPWD = req.query.txtPwd;
-    let txtnewPwd = req.query.txtnewPwd;
-    let txtrepPwd = req.query.txtrepPwd;
-    if(txtnewPwd===txtrepPwd)
+    let txtEMAIL = req.query.txtEmail;
+    let txtPWD = req.query.txtoldPwd;
+    let txtNEWPWD = req.query.txtnewPwd;
+    let txtREPPWD = req.query.txtrepPwd;
+    if(txtNEWPWD===txtREPPWD)
     {
-        mysql.query("update users set pwd=? where email=? and pwd=?",[txtnewPwd,txtEmail,txtPWD],function(err,result)
+        mysql.query("UPDATE users set pwd=? where email=? and pwd=?",[txtNEWPWD,txtEMAIL,txtPWD],function(err,result)
         {
             if(err==null)//no error
             {
                 if(result.affectedRows>=1) 
-                    resp.send("Updated  Successfulllyyyy....");
+                    resp.send("Updated  Successfully");
                 else
                     resp.send("Invalid Email ID");
             }

@@ -81,3 +81,7 @@ function doLogout()
     localStorage.removeItem("activeuser");
     location.href="index.html";
 }
+
+function goBack() {
+    location.href="influencerDashboard.html"
+}
