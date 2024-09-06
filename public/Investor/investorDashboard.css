@@ -125,6 +125,7 @@ main {
 
 .card {
     background-color: #434343;
+    width: 16rem;
     scale: 90%;
     transition: all ease-in-out 200ms;
     padding: 1rem;
@@ -144,17 +145,20 @@ main {
 }
 
 .cardImage {
-    width: 15rem;
-    height: auto;
+    width: 100%; /* Makes the image responsive to the container's width */
+    aspect-ratio: 1 / 1; /* Ensures the image maintains a 1:1 aspect ratio (square) */
+    height: auto; /* Allows the height to adjust automatically based on the width */
+    object-fit: cover; /* Ensures the image fills the area without distortion */
     filter: brightness(80%);
-    transition: all ease-in-out 200ms;
+    transition: filter ease-in-out 200ms;
 }
+
 
 .card:hover .cardImage {
     filter: brightness(100%);
 }
 
-.cardButton {
+.cardButton, .cardButtonLink {
     padding: .5rem 1rem;
     border-radius: .25rem;
     background-color: orange;
@@ -162,10 +166,15 @@ main {
     border: none;
     font-weight: 200;
     font-size: 1.3rem;
+    transition: background-color 100ms ease;
+
+    &:hover {
+        background-color: deepskyblue;
+    }
 }
 
-.cardButton:hover {
-    background-color: deepskyblue;
+.cardButtonLink {
+    display: inline-block;
 }
 
 .cardButton a {

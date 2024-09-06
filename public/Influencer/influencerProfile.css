@@ -141,20 +141,56 @@ main {
 }
 
 form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     row-gap: 2rem;
     padding: 3rem;
     border-radius: 3rem;
     background-color: #272727;
-    box-shadow: 0px 0px 1rem rgba(255, 255, 255, 0.36);
-    margin: 0 10rem;
+    border: solid orange .1rem;
+    margin: auto;
+    width: 75%;
+}
+
+form div {
+    width: 45%;
+    margin: auto;
 }
 
 label {
     color: var(--accentColor);
     margin-bottom: 1rem;
+}
+
+.email {
+    width: 100%;
+    margin: auto;
+}
+
+.profilePic {
+    width: 100%;
+    margin: 4rem auto auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profilePic img {
+    min-width: none;
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profileButtons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .form-control, .form-select {
@@ -163,6 +199,7 @@ label {
     color: white;
     padding: 0.5rem;
     border-radius: 4px;
+    width: 100%;
 }
 
 .form-select, .form-control {
@@ -202,25 +239,6 @@ input[type="file"] {
     display: none;
 }
 
-.profilePic {
-    grid-column: span 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.profilePic img {
-    margin-bottom: 1rem;
-}
-
-.profileButtons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
 .emailSearchButton, .profilePicButton {
     margin-top: 1rem;
     padding: .5rem 1rem;
@@ -246,9 +264,10 @@ input[type="file"] {
 }
 
 .buttons {
-    grid-column: span 2;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .saveButton, .updateButton {
@@ -256,16 +275,15 @@ input[type="file"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border-radius: 8px;
-    background-color: var(--accentColor);
+    background-color: orange;
     color: black;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 0 auto;
 }
 
 .saveButton:hover, .updateButton:hover {
-    background-color: orange;
+    background-color: var(--accentColor);
 }
 
 .saveButton:active, .updateButton:active {

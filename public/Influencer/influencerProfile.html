@@ -52,6 +52,11 @@
     </div>
     <div>
       <form id="iProfileForm" method="post" enctype="multipart/form-data" action="">
+        <div class="profilePic">
+          <img src=""  alt="" id="prev" width="175" height="175">
+          <input type="file" id="ppic" name="ppic" onchange="doPrev(this,prev);">
+          <label for="ppic" class="profilePicButton">Choose Profile Pic</label>
+        </div>
         <div class="email">
           <label for="txtEmail">Email</label>
           <input 
@@ -62,12 +67,6 @@
             id="txtEmail"
           >
           <input type="button" class="emailSearchButton" value="Search" id="btnEmail_infl">
-        </div>
-        <div class="profilePic">
-          <label for="ppic">Profile Pic</label>
-          <img src=""  alt="" id="prev" width="175" height="175">
-          <input type="file" id="ppic" name="ppic" onchange="doPrev(this,prev);">
-          <label for="ppic" class="profilePicButton">Choose Image</label>
         </div>
         <div class="name">
           <label for="txtName">Name</label>
