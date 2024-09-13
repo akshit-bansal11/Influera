@@ -1,15 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const selectElement = document.getElementById('country-select');
-
-    for (const option of selectElement.options) {
-        const flagIcon = option.querySelector('.flag-icon');
-        const country = option.getAttribute('data-country');
-        const code = option.getAttribute('data-code');
-
-        option.innerHTML = `<img src="${flagIcon.src}" class="flag-icon"> ${country} (${code})`;
-    }
-});
-
 $(document).ready(function()
 {
     let active=localStorage.getItem("activeuser");

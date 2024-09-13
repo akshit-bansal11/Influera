@@ -5,7 +5,7 @@
   <!-- !METADATA -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Influencer-Profile</title>
+  <title>Profile</title>
 
   <!-- !External Files and Frameworks -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -19,13 +19,14 @@
 
 <body>
 
+  <!-- !HEADER -->
   <header>
 
     <!-- *Navbar -->
     <nav class="navBar">
       <div class=" navItem navBrand">
-        <img class="brandLogo" src="../Assets/Logo and Icons/brandLogo3.svg" alt="">
-        <a class="brandName" href="../index.html" id="nav-text">Influera</a>
+        <img class="brandLogo" src="/Assets/Logo and Icons/brandLogo3.svg" alt="">
+        <a class="brandName" href="index.html" id="nav-text">Influera</a>
       </div>
       <ul class="navItem navLinks">
         <li class="navLink">
@@ -51,7 +52,7 @@
       <h1 class="profileHeading">Your Profile</h1>
     </div>
     <div>
-      <form id="iProfileForm" method="post" enctype="multipart/form-data" action="">
+      <form id="influenecrForm" method="post" enctype="multipart/form-data" action="">
         <div class="profilePic">
           <img src=""  alt="" id="prev" width="175" height="175">
           <input type="file" id="ppic" name="ppic" onchange="doPrev(this,prev);">
@@ -808,10 +809,10 @@
           <input type="text" class="form-control" id="txtOther" name="txtOther">
         </div>
         <div class="buttons">
-          <button type="submit" class="saveButton" id="btnSave" formaction="/iprofile-save-details">Save</button>
-          <button type="submit" class="updateButton" id="btnUpdate" formaction="/iprofile-update-details" disabled>Update</button>
+          <button type="submit" class="saveButton" id="btnSave" formaction="/influencer-save-details">Save</button>
+          <button type="submit" class="updateButton" id="btnUpdate" formaction="/influencer-update-details" disabled>Update</button>
         </div>
-      </form>
+      </form> 
     </div>
   </main>
     

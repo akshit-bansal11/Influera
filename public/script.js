@@ -1,6 +1,10 @@
 $(document).ready(function() {
     console.log("Script Start");
 
+    let isValidEmail1 = false;
+    let isValidEmail2 = false;
+    let isValidPassword = false;
+
     $("#txtEmail_signup").on("input", function() {
         toggleSignupButton();
         validateEmail($(this).val(), "#emailValidMessage", function(isValid) {
@@ -14,6 +18,13 @@ $(document).ready(function() {
         });
     });
 
+    $("#txtPwd_signup").on("input", function() {
+        validatePassword($(this).val(), "#passwordValidMessage", function(isValid) {
+            isValidPassword = isValid;
+        });
+        toggleSignupButton();
+    });
+
     $("#txtPwd_signup, #utype").on("blur", toggleSignupButton);
 
     $("#txtForget_login").on("blur", function() {
@@ -21,7 +32,7 @@ $(document).ready(function() {
     });
 
     $("#btnSignup").on("click", function() {
-        if (isValidEmail1) {
+        if (isValidEmail1 && isValidPassword) {
             submitForm("/signup-details", {
                 txtEmail: $("#txtEmail_signup").val(),
                 txtPwd: $("#txtPwd_signup").val(),
@@ -29,7 +40,7 @@ $(document).ready(function() {
                 status: 1
             });
         } else {
-            alert("Please enter a valid email address.");
+            alert("Please enter a valid email address and password.");
         }
     });
 
@@ -44,7 +55,9 @@ $(document).ready(function() {
     function toggleSignupButton() {
         const isDisabled =  $("#txtEmail_signup").val() === "" ||
                             $("#txtPwd_signup").val() === "" ||
-                            $("#utype").val() === "none";
+                            $("#utype").val() === "none" ||
+                            !isValidEmail1 ||
+                            !isValidPassword;
         $("#btnSignup").prop("disabled", isDisabled);
     }
 
@@ -55,6 +68,28 @@ $(document).ready(function() {
     function validateEmail(email, messageSelector, callback) {
         const isValid = email.includes("@") && email.includes(".");
         $(messageSelector).text(isValid ? "" : "!!!Please enter a valid email address!!!");
+        callback(isValid);
+    }
+
+    function validatePassword(password, messageSelector, callback) {
+        const hasEightChars = password.length >= 8;
+        const hasNumber = /\d/.test(password);
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+
+        const isValid = hasEightChars && hasNumber && hasUpperCase && hasLowerCase;
+
+        if (password === "") {
+            $(messageSelector).html("");
+        } else {
+            $(messageSelector).html(`
+                Password must Include at least:<br>
+                <span style="margin-left: 20px;">${hasEightChars ? '&#10003;' : '&#46;'} 8 Characters</span><br>
+                <span style="margin-left: 20px;">${hasNumber ? '&#10003;' : '&#46;'} 1 Number</span><br>
+                <span style="margin-left: 20px;">${hasUpperCase ? '&#10003;' : '&#46;'} 1 Capital Letter</span><br>
+                <span style="margin-left: 20px;">${hasLowerCase ? '&#10003;' : '&#46;'} 1 Small Letter</span>
+            `);
+        }
         callback(isValid);
     }
 

@@ -95,15 +95,13 @@ h1, h2, h3, h4, h5, h6, p {
     }
 
     .navButton {
+        all: unset;
         padding: .5rem 1rem;
         border-radius: .25rem;
         background-color: var(--mainColor1);
-        color: black;
-        border: none;
 
         &:hover {
             background-color: var(--mainColor2);
-            color: black;
             transition: all ease-in-out 100ms;
         }
 
@@ -139,7 +137,7 @@ main {
             content: "CONNECT!!";
             position: absolute;
             width: 0%;
-            height: inherit;
+            height: 100%;
             overflow: hidden;
             color: orange;
             border-right: .3rem solid orange;
@@ -201,6 +199,8 @@ main {
 
         &:hover .cardImage {
             filter: brightness(100%);
+            transform: translateY(-40px);
+            border-radius: 50px;
         }
 
         &:hover .cardTitle {
@@ -467,6 +467,16 @@ main {
     }
 
 /* !Modals */
+
+    #passwordValidMessage {
+        font-size: 0.9em;
+        color: #ffc107; /* Warning yellow color */
+        margin-top: 5px;
+    }
+
+    #passwordValidMessage span {
+        transition: color 0.3s ease;
+    }
 
     .modal-content {
         background-color: #272727;

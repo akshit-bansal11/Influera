@@ -1,14 +1,20 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client-Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="investorProfile.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+  <!-- !METADATA -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+
+  <!-- !External Files and Frameworks -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="investorProfile.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
 </head>
 
 <body>
@@ -41,11 +47,12 @@
 
   <!-- !Main -->
   <main>
+    <div><button class="backButton" onclick="goBack()"><i class="bi bi-caret-left-fill"></i></button></div>
     <div class="heading">
       <h1 class="profileHeading">Your Profile</h1>
     </div>
     <div>
-      <form method="post" enctype="multipart/form-data" action="">
+      <form id="iProfileForm" method="post" enctype="multipart/form-data" action="">
         <div class="email">
           <label for="txtEmail">Email</label>
           <input 
@@ -55,7 +62,7 @@
             name="txtEmail" 
             id="txtEmail"
           >
-          <input type="button" class="emailSearchButton" value="Search" id="btnEmail_infl">
+          <input type="button" class="emailSearchButton" value="Search" id="btnEmail_client">
         </div>
         <div class="name">
           <label for="txtName">Name</label>
@@ -752,8 +759,8 @@
           </datalist>
         </div>
         <div class="buttons">
-          <button type="submit" class="saveButton" id="btnSave" formaction="/iprofile-save-details">Save</button>
-          <button type="submit" class="updateButton" id="btnUpdate" formaction="/iprofile-update-details" disabled>Update</button>
+          <button type="submit" class="saveButton" id="btnSave" formaction="/investor-save-details">Save</button>
+          <button type="submit" class="updateButton" id="btnUpdate" formaction="/investor-update-details" disabled>Update</button>
         </div>
       </form>
     </div>

@@ -68,7 +68,9 @@ app.get("/check-login-details", (req, resp) => {
     });
 });
 
-app.post("/iprofile-save-details", async (req, resp) => {
+
+
+app.post("/influencer-save-details", async (req, resp) => {
     let fileName = "/Assets/Illustrations/60111.jpg";
     if (req.files) {
         const filePath = __dirname + "/public/uploads/" + req.files.ppic.name;
@@ -78,7 +80,7 @@ app.post("/iprofile-save-details", async (req, resp) => {
     }
 
     const txtDOB = req.body.txtDob.split("T")[0];
-    const query = "INSERT INTO iprofile VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    const query = "INSERT INTO influencer VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
     const params = [
         req.body.txtEmail, fileName, req.body.txtName, req.body.txtGender,
         txtDOB, req.body.txtAdd, req.body.txtState, req.body.txtCity,
@@ -95,7 +97,7 @@ app.post("/iprofile-save-details", async (req, resp) => {
     });
 });
 
-app.post("/iprofile-update-details", async (req, resp) => {
+app.post("/influencer-update-details", async (req, resp) => {
     let fileName = "";
     if (req.files) {
         const filePath = __dirname + "/public/uploads/" + req.files.ppic.name;
@@ -105,7 +107,7 @@ app.post("/iprofile-update-details", async (req, resp) => {
     }
 
     if (!fileName) {
-        mysql.query("SELECT picpath FROM iprofile WHERE email=?", [req.body.txtEmail], (err, result) => {
+        mysql.query("SELECT picpath FROM influencer WHERE email=?", [req.body.txtEmail], (err, result) => {
             if (err || !result.length) {
                 resp.send("Error retrieving existing profile picture.");
                 return;
@@ -119,7 +121,7 @@ app.post("/iprofile-update-details", async (req, resp) => {
 
     function updateProfile(fileName) {
         const txtDOB = req.body.txtDob.split("T")[0];
-        const query = "UPDATE iprofile SET picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? WHERE email=?";
+        const query = "UPDATE influencer SET picpath=?, iname=?, gender=?, dob=?, address=?, state=?, city=?, contact=?, field=?, insta=?, yt=?, other=? WHERE email=?";
         const params = [
             fileName, req.body.txtName, req.body.txtGender, txtDOB, req.body.txtAdd,
             req.body.txtState, req.body.txtCity, req.body.txtContact, req.body.txtField.toString(),
@@ -138,7 +140,7 @@ app.post("/iprofile-update-details", async (req, resp) => {
 
 app.get("/find-user-details", (req, resp) => {
     const { txtEmail } = req.query;
-    mysql.query("SELECT * FROM iprofile WHERE email=?", [txtEmail], (err, resultJsonAry) => {
+    mysql.query("SELECT * FROM influencer WHERE email=?", [txtEmail], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -274,7 +276,7 @@ app.get("/resume-one", (req, resp) => {
 });
 
 app.get("/fetch-all-influencers", (req, resp) => {
-    mysql.query("SELECT * FROM iprofile", (err, resultJsonAry) => {
+    mysql.query("SELECT * FROM influencer", (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -284,7 +286,7 @@ app.get("/fetch-all-influencers", (req, resp) => {
 });
 
 app.get("/fetch-all-fields", (req, resp) => {
-    mysql.query("SELECT DISTINCT field FROM iprofile", (err, resultJsonAry) => {
+    mysql.query("SELECT DISTINCT field FROM influencer", (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -295,7 +297,7 @@ app.get("/fetch-all-fields", (req, resp) => {
 
 app.get("/fetch-some-field", (req, resp) => {
     const { field } = req.query;
-    mysql.query("SELECT city FROM iprofile WHERE field=?", [field], (err, resultJsonAry) => {
+    mysql.query("SELECT city FROM influencer WHERE field=?", [field], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -306,7 +308,7 @@ app.get("/fetch-some-field", (req, resp) => {
 
 app.get("/fetch-all-details-selected-infl", (req, resp) => {
     const { city } = req.query;
-    mysql.query("SELECT * FROM iprofile WHERE city=?", [city], (err, resultJsonAry) => {
+    mysql.query("SELECT * FROM influencer WHERE city=?", [city], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -317,7 +319,7 @@ app.get("/fetch-all-details-selected-infl", (req, resp) => {
 
 app.get("/fetch-some-name", (req, resp) => {
     const { name } = req.query;
-    mysql.query("SELECT * FROM iprofile WHERE iname LIKE ?", [`%${name}%`], (err, resultJsonAry) => {
+    mysql.query("SELECT * FROM influencer WHERE iname LIKE ?", [`%${name}%`], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
@@ -326,22 +328,23 @@ app.get("/fetch-some-name", (req, resp) => {
     });
 });
 
-app.post("/cprofile-save-details", (req, resp) => {
+app.post("/investor-save-details", (req, resp) => {
+    console.log("jello")
     const { txtEmail, txtName, txtMob, txtType, txtState, txtCity, txtGender } = req.body;
-    const query = "INSERT INTO cprofile VALUES(?,?,?,?,?,?,?)";
+    const query = "INSERT INTO investor VALUES(?,?,?,?,?,?,?)";
 
     mysql.query(query, [txtEmail, txtName, txtMob, txtType, txtState, txtCity, txtGender], err => {
         if (err) {
             resp.send(err.message);
         } else {
-            resp.redirect("result.html");
+            resp.redirect("/Result/result.html");
         }
     });
 });
 
-app.post("/cprofile-update-details", (req, resp) => {
+app.post("/investor-update-details", (req, resp) => {
     const { txtEmail, txtName, txtMob, txtType, txtState, txtCity, txtGender } = req.body;
-    const query = "UPDATE cprofile SET iname=?, contact=?, type=?, state=?, city=?, gender=? WHERE email=?";
+    const query = "UPDATE investor SET iname=?, contact=?, type=?, state=?, city=?, gender=? WHERE email=?";
 
     mysql.query(query, [txtName, txtMob, txtType, txtState, txtCity, txtGender, txtEmail], (err, result) => {
         if (err || result.affectedRows < 1) {
@@ -354,7 +357,7 @@ app.post("/cprofile-update-details", (req, resp) => {
 
 app.get("/find-user-details-client", (req, resp) => {
     const { txtEmail } = req.query;
-    mysql.query("SELECT * FROM cprofile WHERE email=?", [txtEmail], (err, resultJsonAry) => {
+    mysql.query("SELECT * FROM investor WHERE email=?", [txtEmail], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {

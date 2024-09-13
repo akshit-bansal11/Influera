@@ -14,8 +14,6 @@
 
   <!-- !Stylesheets and Libraries -->
     <!-- ?Bootstrap -->
-      <!-- *Boostrap Icons -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
       <!-- *Boostrap Stylesheet CDN -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <!-- *Bootstrap Script CDN -->
@@ -71,6 +69,7 @@
 
       <!-- *SignUp LogIn -->
       <div class="navItem navButtons">
+
         <button
           type="button"
           class="navButton"
@@ -90,6 +89,7 @@
         >
           Login
         </button>
+
       </div>
     </nav>
   </header>
@@ -106,21 +106,43 @@
     <div class="section services" id="services">
       <h1 class="sectionHeading servicesHeading">Services</h1>
       <div class="cardsContainer serviceCards">
+
         <div class="card serviceCard">
-          <img src="/Assets/Images/Services/Services-1.avif" class="cardImage serviceImage" alt="...">
+          <img
+            src="/Assets/Images/Services/Service1.svg"
+            class="cardImage serviceImage"
+            alt="..."
+          >
           <h5 class="cardTitle serviceTitle">Collaborations</h5>
-          <p class="cardDescription serviceDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit numquam cum quas a voluptatem quisquam sunt nisi ullam maxime nemo.</p>
+          <p class="cardDescription serviceDescription">
+            Empowering partnerships to drive innovation and success through shared goals and collective expertise. Let's collaborate for a brighter future, where every contribution counts and talents unite for impactful outcomes.
+          </p>
         </div>
+
         <div class="card serviceCard">
-          <img src="/Assets/Images/Services/Services - 2.avif" class="cardImage serviceImage" alt="...">
+          <img
+            src="/Assets/Images/Services/Service2.svg"
+            class="cardImage serviceImage"
+            alt="Image by pch.vector on Freepik"
+          >
           <h5 class="cardTitle serviceTitle">Meet & Greet</h5>
-          <p class="cardDescription serviceDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit numquam cum quas a voluptatem quisquam sunt nisi ullam maxime nemo.</p>
+          <p class="cardDescription serviceDescription">
+            Connecting minds and building bonds: a space to share stories, spark ideas, and create lasting relationships. Join us for a meet and greet that fosters collaboration, inspiration, and meaningful connections.
+          </p>
         </div>
+
         <div class="card serviceCard">
-          <img src="/Assets/Images/Services/Services - 3.avif" class="cardImage serviceImage" alt="...">
+          <img
+            src="/Assets/Images/Services/Service3.svg"
+            class="cardImage serviceImage"
+            alt="..."
+          >
           <h5 class="cardTitle serviceTitle">Promotions</h5>
-          <p class="cardDescription serviceDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit numquam cum quas a voluptatem quisquam sunt nisi ullam maxime nemo.</p>
+          <p class="cardDescription serviceDescription">
+            Amplify your reach and unlock new opportunities with dynamic promotions. Together, we drive visibility, boost engagement, and create lasting impact, ensuring your message resonates with the right audience.
+          </p>
         </div>
+
       </div>
     </div>
 
@@ -128,16 +150,27 @@
     <div class="section team" id="team">
       <h1 class="sectionHeading teamHeading">Team</h1>
       <div class="cardsContainer teamCards">
+
         <div class="card teamCard">
-          <img src="/Assets/Images/Team/developer.avif" class="cardImage teamImage" alt="...">
+          <img
+            src="/Assets/Images/Team/developer.avif"
+            class="cardImage teamImage"
+            alt="..."
+          >
           <h5 class="cardTitle teamTitle">Developer</h5>
           <p class="cardDescription teamDescription">Akshit Bansal <br> GZSCCET</p>
         </div>
+
         <div class="card teamCard">
-          <img src="/Assets/Images/Team/Guidance.avif" class="cardImage teamImage" alt="...">
+          <img
+            src="/Assets/Images/Team/Guidance.avif"
+            class="cardImage teamImage"
+            alt="..."
+          >
           <h5 class="cardTitle teamTitle">Under the Guidance of</h5>
           <p class="cardDescription teamDescription">Prof. Rajesh bansal <br> Banglore Computer Edu.</p>
         </div>
+
       </div>
     </div>
   </main>
@@ -151,9 +184,9 @@
         <input placeholder="Email" type="text" class="textInput">
       </div>
       <button 
-          type="button" 
-          class="footerButton" 
-          id="buttons"
+        type="button" 
+        class="footerButton" 
+        id="buttons"
       >
         Send
       </button>
@@ -210,8 +243,9 @@
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" name="txtPwd_signup" class="form-control" id="txtPwd_signup">
+              <label for="txtPwd_signup" class="form-label">Password</label>
+              <input type="password" class="form-control" id="txtPwd_signup" required>
+              <div id="passwordValidMessage" class="form-text"></div>
             </div>
             <div class="mb-3">
               Type
