@@ -16,7 +16,6 @@ var controller=module.controller("mycontroller",function($scope,$http)
         $http.get(url).then(allIsWell,notWell);
         function allIsWell(response)
         {
-            alert(JSON.stringify(response.data)) ;
             $scope.jsonArrayCity=response.data;
         }
         function notWell(err)
@@ -31,7 +30,6 @@ var controller=module.controller("mycontroller",function($scope,$http)
         $http.get(url).then(allIsWell,notWell);
         function allIsWell(response)
         {
-            alert(JSON.stringify(response.data)) ;
             $scope.jsonArrayAll=response.data;
         }
         function notWell(err)
@@ -47,7 +45,6 @@ var controller=module.controller("mycontroller",function($scope,$http)
         $http.get(url).then(allIsWell,notWell);
         function allIsWell(response)
         {
-            alert(JSON.stringify(response.data)) ;
             $scope.jsonArrayAll=response.data;
         }
         function notWell(err)
@@ -58,17 +55,14 @@ var controller=module.controller("mycontroller",function($scope,$http)
     $scope.doShowMoreinfo=function(index)
     {
         $scope.jsonArrayMoreinfo =$scope.jsonArrayAll[index];
-        alert(index);
     }
     $scope.doSendEmail=function(email)
     {
-        alert(email);
         let cltemail=$scope.selemail;
         let url="/send-email-influencer?email="+email+"&cltemail="+cltemail;
         $http.get(url).then(allIsWell,notWell);
         function allIsWell(response)
         {
-            alert(JSON.stringify(response.data)) ;
             alert(response.data);
         }
         function notWell(err)

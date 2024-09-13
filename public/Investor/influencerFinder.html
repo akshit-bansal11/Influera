@@ -12,7 +12,7 @@
     <script type="text/javascript" src="influencerFinder.js"></script>
 
 </head>
-<body>
+<body ng-app="mymodule" ng-controller="mycontroller">
     
   <!-- !HEADER -->
   <header>
@@ -39,76 +39,58 @@
       </div>
     </nav>
   </header>
-  <!-- ------------------------------------------------------------- -->
-  <div class="container" >
-    <div class="row" >
-      <div style="color: #1071A2; font-size: 50px;  ">Find Influencers</div>
-    </div>
-  </div>
-    <!--Form-->
-     
-    <div class="row">
+  <main>
+    <h1>Find Influencers</h1>
+  
     <div class="col-md-10" id="form">
-   <form>
-      <div class="row">
-        <div class="col-md-4">
-          <label  class="form-label" >Field</label>
-      <select class="form-select" ng-model="selfield" ng-change="doShowSel();" multiple>
-        <option value="none">Select</option>
-        <option value="Fashion">Fashion/lifestyle</option>
-        <option value="Travel">Travel</option>
-        <option value="Food">Food</option>
-        <option value="Beauty">Beauty</option>
-        <option value="Fitness">Fitness</option>
-        <option value="Tech">Tech</option>
-        <option value="Edutech">Edutech</option>
-        <option value="Parenting">Parenting</option>
-        <option value="Finance">Finance</option>
-        <option value="Gaming">Gaming</option>
-      </select> 
-        </div>
-        <div class="col-md-4">
-          <label for="inputCity" class="form-label">City</label>
-        <select class="form-select" ng-model="selCity" >
-
-          <option ng-repeat="obj in jsonArrayCity" value="{{obj.city}}" >{{obj.city}}</option>
-      </select>
-        </div>
-      </div>
-    <!----------------------------------------------------------------------->
- <center>  <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowSelAll();">Find</button> </center> 
-    <!---------------------------------------------------------------------->
-    <hr>
-  <center>  <div class="col-md-4">
-      <label  class="form-label">Name</label>
-      <input type="text" class="form-control" ng-model="name">
-    </div>
-      <!------------------------------------------------------------------------------>
-      <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowName();">Search By Name</button>
-      <hr>
-    </center>
-    <!------------------------------------------------------------------------------->
-    <div class="container">
-      <div class="row">
-          <div class="col-md-3" ng-repeat="obj in jsonArrayAll" style="background-color: #EAF7FD;">
-              <div class="card mt-5" style="background-color: #EAF7FD;">
-                <center>  <img src="{{obj.picpath}}" width="75%" height="75%" ;></center>
-                  <div class="card-body">
-                    <h5 class="card-title">{{obj.iname}}</h5>
-                    <h5 class="card-title">{{obj.gender}}</h5>
-                    
-                 <a href="https://www.instagram.com/{{obj.insta}}"> <center> <img src="pics/instagram.svg" alt="" width="30px" height="30px"> </center> </a> 
-                    <br>
-                 <center> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-model" ng-click="doShowMoreinfo($index);">More-Info</button> </center>
-                  </div>
-                </div>
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <label  class="form-label" >Field</label>
+            <select class="form-select" ng-model="selfield" ng-change="doShowSel();" multiple>
+              <option value="none">Select</option>
+              <option value="Fashion">Fashion/lifestyle</option>
+              <option value="Travel">Travel</option>
+              <option value="Food">Food</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Tech">Tech</option>
+              <option value="Edutech">Edutech</option>
+              <option value="Parenting">Parenting</option>
+              <option value="Finance">Finance</option>
+              <option value="Gaming">Gaming</option>
+            </select>
           </div>
-      </div>
-  </div>
-    
-  </form> 
-</div>
-</div>
+          <div class="col-md-4">
+            <label for="inputCity" class="form-label">City</label>
+            <select class="form-select" ng-model="selCity" >
+              <option ng-repeat="obj in jsonArrayCity" value="{{obj.city}}" >{{obj.city}}</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowSelAll();">Find</button> 
+        <div class="col-md-4">
+          <label  class="form-label">Name</label>
+          <input type="text" class="form-control" ng-model="name">
+        </div>
+        <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowName();">Search By Name</button>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" ng-repeat="obj in jsonArrayAll" style="background-color: #EAF7FD;">
+              <div class="card mt-5" style="background-color: #EAF7FD;">
+                <img src="{{obj.picpath}}" width="75%" height="75%" ;>
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.iname}}</h5>
+                  <h5 class="card-title">{{obj.gender}}</h5>
+                  <a href="https://www.instagram.com/{{obj.insta}}"> <img src="pics/instagram.svg" alt="" width="30px" height="30px"> </a> 
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-model" ng-click="doShowMoreinfo($index);">More-Info</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form> 
+    </div>
 
 <!--Linking Modal-->
 <div class="modal fade" id="more-info-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: purple;" >
@@ -156,16 +138,15 @@
               </div>
               <hr>
               <div>
-                <a href="https://www.instagram.com/{{jsonArrayMoreinfo.insta}}"> <center> <img src="pics/instagram.svg" alt="" width="30px" height="30px"> </center> </a> 
+                <a href="https://www.instagram.com/{{jsonArrayMoreinfo.insta}}"> <img src="pics/instagram.svg" alt="" width="30px" height="30px"> </a> 
                 
               </div>
               <div >
                 
-                <a href="https://www.youtube.com//{{jsonArrayMoreinfo.yt}}"> <center> <img src="pics/youtube.svg" alt="" width="30px" height="30px"> </center> </a> 
+                <a href="https://www.youtube.com//{{jsonArrayMoreinfo.yt}}"> <img src="pics/youtube.svg" alt="" width="30px" height="30px"> </a> 
               </div>
               <hr>
-              <div>
-               <center> <input type="button" id="btnConnect" class="btn btn-outline-secondary" value="Connect" ng-click="doSendEmail(jsonArrayMoreinfo.email);"></center>
+              <div> <input type="button" id="btnConnect" class="btn btn-outline-secondary" value="Connect" ng-click="doSendEmail(jsonArrayMoreinfo.email);"
               </div>
               </form>
       </div>
@@ -173,6 +154,9 @@
     </div>
   </div>
 </div>
+
+</main>
+
 <!-- !FOOTER -->
 <footer class="footer">
   <div class="footerSection">
