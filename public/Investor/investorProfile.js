@@ -8,7 +8,7 @@ $(document).ready(function()
         return;
     }
 
-    $("#btnEmail_client").click(function(){
+    $("#searchByEmail").click(function(){
         let obj={
             type:"get",
             url:"/find-user-details-client",
@@ -27,7 +27,7 @@ $(document).ready(function()
             $("#txtGender").val(jsonAry[0].gender);
             $("#txtCity").val(jsonAry[0].city);
             $("#txtState").val(jsonAry[0].state);
-            $("#txtMob").val(jsonAry[0].contact);
+            $("#txtContact").val(jsonAry[0].contact);
             $("#txtType").val(jsonAry[0].type);
             $("#btnSave").prop("disabled",true);
             $("#btnUpdate").prop("disabled",false);
@@ -37,10 +37,23 @@ $(document).ready(function()
         })
     
     });
+
+    $('#txtContact').on('input', function() {
+        let value = $(this).val();
+        // Allow only numbers and '+' at the beginning
+        if (!/^\+?[0-9]*$/.test(value)) {
+            $(this).val(value.slice(0, -1)); // Remove last entered character
+        }
+    });
+
 });
 
 function doLogout()
 {
     localStorage.removeItem("activeuser");
-    location.href="../index.html";
+    location.href="index.html";
+}
+
+function goBack() {
+    location.href="investorDashboard.html"
 }

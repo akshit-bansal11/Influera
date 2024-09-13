@@ -18,7 +18,7 @@ $(document).ready(function()
         $("#bg").css("display","none");
     });
 
-    $("#btnEmail_infl").click(function(){
+    $("#searchByEmail").click(function(){
         console.log("JS SUcks");
         let obj={
             type:"get",
