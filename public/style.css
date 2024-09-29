@@ -2,9 +2,10 @@
     --mainColor1: orange;
     --mainColor2: deepskyblue;
     --textColor1: rgb(17, 17, 17);
-    --textCOlor2: rgb(236, 236, 236);
+    --textColor2: rgb(236, 236, 236);
     --backgroundColor1: #272727;
     --backgroundColor2: #8e8e8e;
+    --backgroundColor3: #434343;
 }
 
 * {
@@ -40,7 +41,7 @@ h1, h2, h3, h4, h5, h6, p {
     /* *NavBar */
 
     header {
-        background-color: #272727;
+        background-color: var(--backgroundColor1);
     }
 
     .navBar {
@@ -66,7 +67,7 @@ h1, h2, h3, h4, h5, h6, p {
     }
 
     .brandName {
-        color: white;
+        color: var(--textColor2);
         font-size: 2rem;
     }
 
@@ -82,7 +83,7 @@ h1, h2, h3, h4, h5, h6, p {
     }
 
     .navLink a {
-        color: white;
+        color: var(--textColor2);
         font-size: 1.25rem;
 
         &:hover {
@@ -187,7 +188,7 @@ main {
     }
 
     .card {
-        background-color: #434343;
+        background-color: var(--backgroundColor3);
         scale: 90%;
         transition: all ease-in-out 200ms;
         padding: 1rem;
@@ -291,7 +292,7 @@ main {
 /* !Footer */
 
     footer {
-        color: white;
+        color: var(--textColor2);
         padding: 2rem 5rem;
         display: flex;
         align-items: top;
@@ -389,7 +390,7 @@ main {
         transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
         transition-duration: 200ms;
         transition-property: background-color;
-        color: #e8e8e8;
+        color: var(--textColor2);
         font-size: 14px;
         font-weight: 500;
         padding: 12px;
@@ -422,7 +423,7 @@ main {
         all: unset;
         width: max-content;
         background-color: var(--mainColor1);
-        color: black;
+        color: var(--textColor1);
         padding: .5rem 1rem;
         border-radius: .2rem;
         transition: all 100ms ease;
@@ -445,7 +446,7 @@ main {
     }
 
     .footerList li a {
-        color: white;
+        color: var(--textColor2);
 
         &:hover {
             color: var(--mainColor2);
@@ -508,7 +509,7 @@ main {
         background-color: #343434;
         margin: 1rem 0 1rem 0;
         border: solid var(--mainColor1) .1rem;
-        color: white;
+        color: var(--textColor2);
     }
 
     .form-select, .form-control {
@@ -522,7 +523,7 @@ main {
         &:focus {
             background-color: #555555;
             border: solid var(--mainColor1) .1rem;
-            color: white;
+            color: var(--textColor2);
         }
     }
 
@@ -542,12 +543,12 @@ main {
         padding: .5rem 1rem;
         border-radius: .25rem;
         background-color: var(--mainColor1);
-        color: black;
+        color: var(--textColor1);
         border: none;
 
         &:hover {
             background-color: var(--mainColor2);
-            color: black;
+            color: var(--textColor1);
         }
     
         &:active {

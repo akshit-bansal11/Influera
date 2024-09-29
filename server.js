@@ -68,8 +68,6 @@ app.get("/check-login-details", (req, resp) => {
     });
 });
 
-
-
 app.post("/influencer-save-details", async (req, resp) => {
     let fileName = "/Assets/Illustrations/60111.jpg";
     if (req.files) {
@@ -297,7 +295,7 @@ app.get("/fetch-all-fields", (req, resp) => {
 
 app.get("/fetch-some-field", (req, resp) => {
     const { field } = req.query;
-    mysql.query("SELECT city FROM influencer WHERE field=?", [field], (err, resultJsonAry) => {
+    mysql.query("SELECT DISTINCT city FROM influencer WHERE field=?", [field], (err, resultJsonAry) => {
         if (err) {
             resp.send(err.message);
         } else {
