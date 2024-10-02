@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script type="text/javascript" src="influencerFinder.js"></script>
+    <link rel="icon" href="/Assets/Logo and Icons/brandLogo3.svg">
 
 </head>
 <body ng-app="mymodule" ng-controller="mycontroller">
@@ -20,7 +21,7 @@
     <!-- *Navbar -->
     <nav class="navBar">
       <div class=" navItem navBrand">
-        <img class="brandLogo" src="../Assets/Logo and Icons/brandLogo3.svg" alt="">
+        <img class="brandLogo" src="/Assets/Logo and Icons/brandLogo3.svg" alt="">
         <a class="brandName" href="index.html" id="nav-text">Influera</a>
       </div>
       <ul class="navItem navLinks">
@@ -42,54 +43,59 @@
   <main>
     <h1>Find Influencers</h1>
   
-    <div class="col-md-10" id="form">
+    <div class="influencerFinderContainer" id="form">
       <form>
-        <div class="row">
-          <div class="col-md-4">
-            <label  class="form-label" >Field</label>
-            <select class="form-select" ng-model="selfield" ng-change="doShowSel();" multiple>
-              <option value="none">Select</option>
-              <option value="Fashion">Fashion/lifestyle</option>
-              <option value="Travel">Travel</option>
-              <option value="Food">Food</option>
-              <option value="Beauty">Beauty</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Tech">Tech</option>
-              <option value="Edutech">Edutech</option>
-              <option value="Parenting">Parenting</option>
-              <option value="Finance">Finance</option>
-              <option value="Gaming">Gaming</option>
-            </select>
-          </div>
-          <div class="col-md-4">
-            <label for="inputCity" class="form-label">City</label>
-            <select class="form-select" ng-model="selCity" >
-              <option ng-repeat="obj in jsonArrayCity" value="{{obj.city}}" >{{obj.city}}</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowSelAll();">Find</button> 
-        <div class="col-md-4">
-          <label  class="form-label">Name</label>
-          <input type="text" class="form-control" ng-model="name">
-        </div>
-        <button type="submit" class="btn btn-primary" id="buttons" ng-click="doShowName();">Search By Name</button>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3" ng-repeat="obj in jsonArrayAll" style="background-color: #EAF7FD;">
-              <div class="card mt-5" style="background-color: #EAF7FD;">
-                <img src="{{obj.picpath}}" width="75%" height="75%" ;>
-                <div class="card-body">
-                  <h5 class="card-title">{{obj.iname}}</h5>
-                  <h5 class="card-title">{{obj.gender}}</h5>
-                  <a href="https://www.instagram.com/{{obj.insta}}"> <img src="pics/instagram.svg" alt="" width="30px" height="30px"> </a> 
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-model" ng-click="doShowMoreinfo($index);">More-Info</button>
-                </div>
-              </div>
+        <div class="byFieldCity">
+          <div>
+            <div class="byField">
+              <label  class="formLabel" >Field</label>
+              <select class="formSelect" ng-model="selfield" ng-change="doShowSel();">
+                <option value="Fashion">Fashion/lifestyle</option>
+                <option value="Travel">Travel</option>
+                <option value="Food">Food</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Tech">Tech</option>
+                <option value="Edutech">Edutech</option>
+                <option value="Parenting">Parenting</option>
+                <option value="Finance">Finance</option>
+                <option value="Gaming">Gaming</option>
+              </select>
+            </div>
+            
+            <div class="byCity">
+              <label for="inputCity" class="formLabel">City</label>
+              <select class="formSelect" ng-model="selCity" >
+                <option ng-repeat="obj in jsonArrayCity" value="{{obj.city}}" >{{obj.city}}</option>
+              </select>
             </div>
           </div>
+
+          <button type="submit" class="influencerFinderButton" id="byFieldCityButton" ng-click="doShowSelAll();">Find</button> 
+        </div>
+
+        <div class="byName">
+          <div>
+            <label  class="formLabel">Name</label>
+            <input type="text" class="formControl" ng-model="name">
+          </div>
+          <button type="submit" class="influencerFinderButton" id="byNameButton" ng-click="doShowName();">Search By Name</button>
         </div>
       </form> 
+    </div>
+    
+    <div class="influencerCards">
+      <div class="influencerCard" ng-repeat="obj in jsonArrayAll">
+        <img class="cardImage" src="{{obj.picpath}}" width="75%" height="75%" ;>
+        <div class="cardBody">
+          <h5 class="cardName">{{obj.iname}}</h5>
+          <h5 class="cardGender">{{obj.gender}}</h5>
+          <a class="cardInstagramLogo" href="https://www.instagram.com/{{obj.insta}}">
+            <img class="instagramLogo" src="/Assets/Logo and Icons/480px-Instagram_logo_2022.svg.png" alt="">
+          </a> 
+        </div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#more-info-model" ng-click="doShowMoreinfo($index);">More Info</button>
+      </div>
     </div>
 
 <!--Linking Modal-->
@@ -104,7 +110,7 @@
           <form action="" method="post"></form>
               
               <!-- <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <label for="exampleInputPassword1" class="formLabel">Password</label>
                 <input type="password" class="form-control" name="txtPwd_login" id="txtPwd_login">
               </div> -->
               <div class="mb-3">
@@ -113,27 +119,27 @@
               </div>
               <hr>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">FullName :</label>
+                <label for="exampleInputPassword1" class="formLabel">FullName :</label>
                 {{jsonArrayMoreinfo.iname}}
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">DOB :</label>
+                <label for="exampleInputPassword1" class="formLabel">DOB :</label>
                 {{jsonArrayMoreinfo.dob}}
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1"  class="form-label">Email :</label>
+                <label for="exampleInputPassword1"  class="formLabel">Email :</label>
                 {{jsonArrayMoreinfo.email}}
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">City :</label>
+                <label for="exampleInputPassword1" class="formLabel">City :</label>
                 {{jsonArrayMoreinfo.city}}
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contact :</label>
+                <label for="exampleInputPassword1" class="formLabel">Contact :</label>
                 {{jsonArrayMoreinfo.contact}}
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Address :</label>
+                <label for="exampleInputPassword1" class="formLabel">Address :</label>
                 {{jsonArrayMoreinfo.address}}
               </div>
               <hr>

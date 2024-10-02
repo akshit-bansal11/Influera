@@ -51,7 +51,7 @@ $(document).ready(function()
 function doLogout()
 {
     localStorage.removeItem("activeuser");
-    location.href="index.html";
+    location.href="../index.html";
 }
 
 function goBack() {

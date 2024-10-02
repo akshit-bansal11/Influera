@@ -79,7 +79,7 @@ function doPrev(fileCtrl,imgPrev)
 function doLogout()
 {
     localStorage.removeItem("activeuser");
-    location.href="index.html";
+    location.href="../index.html";
 }
 
 function goBack() {

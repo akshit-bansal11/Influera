@@ -39,6 +39,18 @@ $(document).ready(function() {
                 utype: $("#utype").val(),
                 status: 1
             });
+
+            function submitForm(url, data) {
+                $.ajax({ type: "get", url, data })
+                    .done(function(resp) {
+                        alert(resp);
+                        $('#signupModal').modal('hide');
+                        $('#loginModal').modal('show');
+                    })
+                    .fail(function(err) {
+                        alert(err.statusText);
+                    });
+            }
         } else {
             alert("Please enter a valid email address and password.");
         }

@@ -9,7 +9,7 @@ body {
     background-color: #8e8e8e;
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap: 2rem;
     max-width: 100%;
 }
 
@@ -102,11 +102,146 @@ a {
 
 /* !Main */
 main {
-    padding: 5rem;
+    padding: 2rem 5rem;
+    background-color: #272727;
+    color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 h1 {
     color: orange;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.influencerFinderContainer {
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.byFieldCity, .byName, .byField, .byCity {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.byFieldCity, .byName {
+    width: 45%;
+    row-gap: 1rem;
+}
+
+.byField, .byCity {
+    width: 45%;
+}
+
+.byFieldCity>div {
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+select, input {
+    width: 100%;
+    padding: .5rem;
+    background-color: #272727;
+    color: white;
+    border: orange solid .1rem;
+    margin-top: .3rem;
+}
+
+button {
+    background-color: orange;
+    color: #272727;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+button:hover {
+    background-color: deepskyblue;
+}
+
+.influencerCards {
+    margin-top: 3rem;
+    background-color: #333;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3rem;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.influencerCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #444444;
+    width: 15rem;
+    height: auto;
+    padding: 2rem;
+    transition: scale 200ms ease;
+    border-radius: 1rem;
+}
+
+.cardImage {
+    width: 10rem;
+    border-radius: 5%;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.instagramLogo {
+    width: 1.5rem;
+    background-size: contain;
+}
+
+.influencerCard:hover {
+    scale: 110%;
+}
+
+.modal-content {
+    background-color: #272727;
+    color: #e8e8e8;
+}
+
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
+}
+
+.mb-3 img {
+    border: 3px solid orange;
 }
 
 /* !Footer */

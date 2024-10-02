@@ -72,19 +72,19 @@ var controller=module.controller("mycontroller",function($scope,$http)
     }
 });
 
-// function doLogout()
-// {
-//     localStorage.removeItem("activeuser");
-//     location.href="index.html";
-// }
+function doLogout()
+{
+    localStorage.removeItem("activeuser");
+    location.href="../index.html";
+}
 
-// $(document).ready(function()
-// {
-//     if(localStorage.getItem("activeuser")==null)
-//     {
-//         location.href="../index.html";
-//         return;
-//     }
-// })
+$(document).ready(function()
+{
+    if(localStorage.getItem("activeuser")==null)
+    {
+        location.href="../index.html";
+        return;
+    }
+})
 
 console.log("Hello")
