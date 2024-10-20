@@ -236,6 +236,25 @@ button:hover {
     border-bottom: 1px solid #444;
 }
 
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+        &:first-child {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
 .modal-footer {
     border-top: 1px solid #444;
 }

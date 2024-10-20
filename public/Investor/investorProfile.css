@@ -164,7 +164,7 @@ form div {
 }
 
 label {
-    color: var(--accentColor);
+    color: var(--mainColor2);
     margin-bottom: 1rem;
 }
 

@@ -250,7 +250,7 @@ main {
         font-size: 2rem;
     }
 
-    @keyframes fadeOutServices {
+    /* @keyframes fadeOutServices {
 
         0% {
             opacity: 0%;
@@ -262,7 +262,7 @@ main {
             opacity: 0%;
         }
         
-    }
+    } */
 
     /* *Team */
 
@@ -276,7 +276,7 @@ main {
         font-size: 1.5rem;
     }
 
-    @keyframes fadeOutTeam {
+    /* @keyframes fadeOutTeam {
 
         0% {
             opacity: 100%;
@@ -288,7 +288,7 @@ main {
             opacity: 100%;
         }
         
-    }
+    } */
 /* !Footer */
 
     footer {
